@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using Solarness.Model;
 using Solarness.Services.Interfaces;
 using Solarness.Controllers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Solarness.Controllers
 {

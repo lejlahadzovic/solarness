@@ -8,6 +8,7 @@ namespace Solarness.Services
     {
         public MappingProfile()
         {
+            CreateMap<Database.Role, Model.Role>();
             CreateMap<Database.User,Model.User>();
             CreateMap<Model.Requests.UserInsertRequest, Database.User>();
             CreateMap<Model.Requests.UserUpdateRequest, Database.User>(); 

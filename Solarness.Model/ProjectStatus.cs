@@ -9,5 +9,4 @@ public partial class ProjectStatus
 
     public string StatusName { get; set; } = null!;
 
-    public virtual ICollection<Project> Projects { get; set; } = new List<Project>();
 }

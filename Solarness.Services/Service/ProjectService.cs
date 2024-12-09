@@ -21,5 +21,12 @@ namespace Solarness.Services.Service
         public ProjectService(SolarnessDbContext context, IMapper mapper):base(context,mapper)
         {
         }
+
+        public override IQueryable<Database.Project> AddInclude(IQueryable<Database.Project> query, ProjectSearchObject? search = null)
+        {
+            query = query.Include(p => p.Status).Include(p => p.Team).AsQueryable();
+            
+            return base.AddInclude(query, search);
+        }
     }
 }

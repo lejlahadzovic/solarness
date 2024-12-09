@@ -11,8 +11,6 @@ public partial class TeamMember
 
     public int? TeamId { get; set; }
 
-    public virtual ICollection<Task> Tasks { get; set; } = new List<Task>();
-
     public virtual Team? Team { get; set; }
 
     public virtual User? User { get; set; }

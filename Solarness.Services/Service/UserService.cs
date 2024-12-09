@@ -76,6 +76,23 @@ namespace Solarness.Services.Service
             }
             return _mapper.Map<Model.User>(entity);
         }
+        public async Task<Model.User> GetUserByUsername(string username)
+        {
+            if (string.IsNullOrEmpty(username))
+            {
+                throw new Exception("User is not authorized");
+            }
+
+            var user = await _context.Users
+                .FirstOrDefaultAsync(s => s.Username == username);
+
+            if (user == null)
+            {
+                throw new Exception("Student not found");
+            }
+
+            return _mapper.Map<Model.User>(user);
+        }
         public bool VerifyPassword(string inputPassword, string storedHash, string storedSalt)
         {
             var hash = GenerateHash(storedSalt, inputPassword);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace Solarness.Model
 {
@@ -24,6 +25,7 @@ namespace Solarness.Model
         public string PasswordSalt { get; set; } = null!;
 
         public int RoleId { get; set; }
+        public virtual Role Role { get; set; } = null!;
 
     }
 }

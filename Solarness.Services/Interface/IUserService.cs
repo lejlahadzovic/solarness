@@ -12,5 +12,6 @@ namespace Solarness.Services.Interface
     public interface IUserService: ICRUDService<Model.User,UserSearchObject,UserInsertRequest,UserUpdateRequest>
     {
         public Task<Model.User> Login(string username, string password);
+        public Task<Model.User> GetUserByUsername(string username);
     }
 }

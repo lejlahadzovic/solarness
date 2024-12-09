@@ -21,5 +21,11 @@ namespace Solarness.Services.Service
         public TeamMemberService(SolarnessDbContext context, IMapper mapper):base(context,mapper)
         {
         }
+        public override IQueryable<Database.TeamMember> AddInclude(IQueryable<Database.TeamMember> query, TeamMemberSearchObject? search = null)
+        {
+            query = query.Include(p => p.User).Include(p => p.Team).AsQueryable();
+
+            return base.AddInclude(query, search);
+        }
     }
 }

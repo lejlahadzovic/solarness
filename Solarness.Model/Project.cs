@@ -40,4 +40,8 @@ public partial class Project
     public int? UserId { get; set; }
 
     public int? HomeownerId { get; set; }
+
+    public virtual ProjectStatus? Status { get; set; }
+
+    public virtual Team? Team { get; set; }
 }

@@ -20,7 +20,7 @@ class LoginPage extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.black, Color(0xFF212121)],
+            colors: [Colors.white, Colors.grey.shade300],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -44,7 +44,7 @@ class LoginPage extends StatelessWidget {
                   child: Icon(
                     Icons.wb_sunny_outlined,
                     size: 80,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -54,7 +54,7 @@ class LoginPage extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
-                    color: Colors.yellowAccent,
+                    color: Colors.orange,
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -62,7 +62,7 @@ class LoginPage extends StatelessWidget {
                   'Illuminate your path to clean energy.',
                   style: TextStyle(
                     fontSize: 16,
-                    color: Colors.grey,
+                    color: Colors.black54,
                   ),
                 ),
                 const SizedBox(height: 30),
@@ -71,11 +71,11 @@ class LoginPage extends StatelessWidget {
                   width: 400,
                   padding: const EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
-                    color: Colors.black87,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(15),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.5),
+                        color: Colors.grey.withOpacity(0.5),
                         blurRadius: 10,
                         offset: const Offset(0, 4),
                       ),
@@ -88,17 +88,17 @@ class LoginPage extends StatelessWidget {
                         controller: _usernameController,
                         decoration: InputDecoration(
                           labelText: 'Username',
-                          labelStyle: const TextStyle(color: Colors.grey),
+                          labelStyle: const TextStyle(color: Colors.black54),
                           prefixIcon: const Icon(Icons.person,
-                              color: Colors.yellowAccent),
+                              color: Colors.orange),
                           filled: true,
-                          fillColor: Colors.black54,
+                          fillColor: Colors.grey.shade200,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: BorderSide.none,
                           ),
                         ),
-                        style: const TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.black),
                       ),
                       const SizedBox(height: 20),
                       // Password Field
@@ -107,33 +107,34 @@ class LoginPage extends StatelessWidget {
                         obscureText: true,
                         decoration: InputDecoration(
                           labelText: 'Password',
-                          labelStyle: const TextStyle(color: Colors.grey),
-                          prefixIcon: const Icon(Icons.lock,
-                              color: Colors.yellowAccent),
+                          labelStyle: const TextStyle(color: Colors.black54),
+                          prefixIcon: const Icon(Icons.lock, color: Colors.orange),
                           filled: true,
-                          fillColor: Colors.black54,
+                          fillColor: Colors.grey.shade200,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: BorderSide.none,
                           ),
                         ),
-                        style: const TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.black),
                       ),
                       const SizedBox(height: 30),
                       // Login Button
                       ElevatedButton(
-                        onPressed: () {
+                        onPressed: () async {
                           var username = _usernameController.text.trim();
                           var password = _passwordController.text.trim();
 
                           if (username.isEmpty || password.isEmpty) {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text(
-                                'Both username and password are required!',
-                                style: TextStyle(color: Colors.white),
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Both username and password are required!',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                backgroundColor: Colors.redAccent,
                               ),
-                              backgroundColor: Colors.redAccent,
-                            ));
+                            );
                             return;
                           }
 
@@ -141,24 +142,30 @@ class LoginPage extends StatelessWidget {
                           Authorization.password = password;
 
                           try {
-                            _userProvider.get();
-                           
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => const HomePage(),
+                            var response = await _userProvider.get();
+
+                            if (response != null) {
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                  builder: (context) => const HomePage(),
+                                ),
+                              );
+                            } else {
+                              throw Exception("Invalid credentials");
+                            }
+                          } catch (e) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Row(
+                                  children: [
+                                    Icon(Icons.error, color: Colors.white),
+                                    SizedBox(width: 8),
+                                    Text('Incorrect username or password'),
+                                  ],
+                                ),
+                                backgroundColor: Colors.redAccent,
                               ),
                             );
-                          } on Exception catch (e) {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Row(
-                                children: [
-                                  Icon(Icons.error, color: Colors.white),
-                                  SizedBox(width: 8),
-                                  Text('Incorrect username or password'),
-                                ],
-                              ),
-                              backgroundColor: Colors.redAccent,
-                            ));
                             _usernameController.clear();
                             _passwordController.clear();
                           }
@@ -166,7 +173,7 @@ class LoginPage extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 50, vertical: 15),
-                          backgroundColor: Colors.yellowAccent,
+                          backgroundColor: Colors.orange,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),
@@ -176,7 +183,7 @@ class LoginPage extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                            color: Colors.white,
                           ),
                         ),
                       ),
@@ -189,7 +196,7 @@ class LoginPage extends StatelessWidget {
                   children: [
                     const Text(
                       'Don’t have an account?',
-                      style: TextStyle(color: Colors.grey),
+                      style: TextStyle(color: Colors.black54),
                     ),
                     TextButton(
                       onPressed: () {
@@ -197,7 +204,7 @@ class LoginPage extends StatelessWidget {
                       },
                       child: const Text(
                         'Sign Up',
-                        style: TextStyle(color: Colors.yellowAccent),
+                        style: TextStyle(color: Colors.orange),
                       ),
                     ),
                   ],

@@ -11,5 +11,7 @@ namespace Solarness.Services.Interface
 {
     public interface ITeamService : IService<Model.Team, TeamSearchObject>
     {
+        Task<List<Model.TeamMember>> GetTeamMembers(int teamId);
+        
     }
 }

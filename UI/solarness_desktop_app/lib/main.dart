@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
+import 'package:solarness_desktop_app/providers/homeowner_provider.dart';
 import 'package:solarness_desktop_app/providers/project_provider.dart';
+import 'package:solarness_desktop_app/providers/status_provider.dart';
 import 'package:solarness_desktop_app/providers/task_provider.dart';
 import 'package:solarness_desktop_app/providers/team_member_provider.dart';
+import 'package:solarness_desktop_app/providers/team_provider.dart';
 import 'package:solarness_desktop_app/providers/user_provider.dart';
 import 'firebase_options.dart';
 import 'package:solarness_desktop_app/login.dart';
@@ -28,7 +31,10 @@ Future<void> main() async {
         ChangeNotifierProvider(create: (_) => UserProvider()),
         ChangeNotifierProvider(create: (_) => ProjectProvider()),
         ChangeNotifierProvider(create: (_) => TaskProvider()),
+        ChangeNotifierProvider(create: (_) => TeamProvider()),
         ChangeNotifierProvider(create: (_) => TeamMemberProvider()),
+        ChangeNotifierProvider(create: (_) => HomeownerProvider()),
+        ChangeNotifierProvider(create: (_) => ProjectStatusProvider()),
       ],
       child: MyApp(),
     ),

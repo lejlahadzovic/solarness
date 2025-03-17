@@ -52,7 +52,6 @@ class _ChatScreenState extends State<ChatScreen> {
       otherUser = ChatUser(
         id: widget.chatUser.userId.toString(),
         firstName: widget.chatUser.firstName,
-        profileImage: widget.chatUser.picture,
       );
     } catch (e) {
       print('Error initializing chat: $e');
@@ -66,14 +65,15 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black, // Set background to black
+      backgroundColor: Colors.white, // White background
       appBar: AppBar(
         title: Text(
           widget.chatUser.firstName!,
-          style: TextStyle(color: Colors.yellow[800]), // Set title to dark yellow
+          style: TextStyle(color: Color(0xFFFFD700)), // Gold title text
         ),
-        backgroundColor: Colors.black, // Dark app bar background
-        elevation: 0,
+        backgroundColor: Colors.white, // White app bar background
+        elevation: 1,
+        iconTheme: IconThemeData(color: Color(0xFFFFD700)), // Gold icon color
       ),
       body: _isLoading ? _buildLoading() : _buildUI(),
     );
@@ -95,7 +95,7 @@ class _ChatScreenState extends State<ChatScreen> {
         }
 
         if (snapshot.hasError) {
-          return Center(child: Text('Error: ${snapshot.error}', style: TextStyle(color: Colors.yellow[800])));
+          return Center(child: Text('Error: ${snapshot.error}', style: TextStyle(color: Color(0xFFFFD700))));
         }
 
         Chat? chat = snapshot.data?.data();
@@ -113,15 +113,15 @@ class _ChatScreenState extends State<ChatScreen> {
             trailing: [
               _mediaMessageButton(),
             ],
-            inputTextStyle: TextStyle(color: Colors.yellow[800]), // Dark yellow for input text
+            inputTextStyle: TextStyle(color: Color(0xFFFFD700)), // Gold text color
             inputDecoration: InputDecoration(
               hintText: 'Type your message...',
-              hintStyle: TextStyle(color: Colors.white70), // Light placeholder
+              hintStyle: TextStyle(color: Color(0xFFFFD700)), // Gold placeholder
               filled: true,
-              fillColor: Colors.grey[800], // Dark input field color
+              fillColor: Colors.white, // White input field background
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide.none,
+                borderSide: BorderSide(color: Color(0xFFFFD700)), // Gold border
               ),
             ),
           ),
@@ -211,7 +211,7 @@ class _ChatScreenState extends State<ChatScreen> {
           }
         }
       },
-      icon: Icon(Icons.image, color: Colors.yellow[800]), // Set icon color to dark yellow
+      icon: Icon(Icons.image, color: Color(0xFFFFD700)), // Gold icon color
     );
   }
 }

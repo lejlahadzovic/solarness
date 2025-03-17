@@ -3,21 +3,24 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
+import 'package:http/io_client.dart';
 import 'package:solarness_desktop_app/models/search_result.dart';
 import 'package:solarness_desktop_app/utils/util.dart';
 
 abstract class BaseProvider<T> with ChangeNotifier {
   static String? _baseUrl;
   String _endPoint = "";
+  late IOClient _ioClient;
 
   BaseProvider(String endPoint) {
     _endPoint = endPoint;
     _baseUrl = const String.fromEnvironment("baseUrl",
-        defaultValue: "https://localhost:7195/");
+        defaultValue: "http://localhost:5201/");
   }
 
   String? get baseUrl => _baseUrl;
   String get endPoint => _endPoint;
+   IOClient get ioClient => _ioClient;
   
   Future<SearchResult<T>> get({dynamic filter}) async {
     var url = "$_baseUrl$_endPoint";

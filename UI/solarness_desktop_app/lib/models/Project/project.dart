@@ -12,6 +12,7 @@ class Project {
   String? streetAddress;
   String? city;
   int? kw;
+  double? contractAmount;
   DateTime? siteInspectionDate;
   DateTime? engineeringSubmitDate;
   DateTime? engineeringReceivedDate;
@@ -26,7 +27,7 @@ class Project {
 
 
   Project(this.projectId, this.projectName, this.projectDescription, this.streetAddress, this.city, this.kw,this.siteInspectionDate,this.engineeringSubmitDate,this.engineeringReceivedDate,
-  this.saleDate,this.significance,this.urgency,this.priorityLevel,this.statusId,this.teamId, this.status,this.team);
+  this.saleDate,this.significance,this.urgency,this.priorityLevel,this.statusId,this.teamId, this.status,this.team,this.contractAmount);
 
   factory Project.fromJson(Map<String, dynamic> json) =>
       _$ProjectFromJson(json);

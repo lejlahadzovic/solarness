@@ -80,7 +80,6 @@ public partial class SolarnessDbContext : DbContext
 
             entity.HasOne(d => d.Project).WithMany(p => p.Documentations)
                 .HasForeignKey(d => d.ProjectId)
-                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__Documenta__Proje__7F2BE32F");
         });
 
@@ -97,7 +96,6 @@ public partial class SolarnessDbContext : DbContext
 
             entity.HasOne(d => d.Project).WithMany(p => p.Financings)
                 .HasForeignKey(d => d.ProjectId)
-                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__Financing__Proje__44FF419A");
         });
 
@@ -126,7 +124,6 @@ public partial class SolarnessDbContext : DbContext
 
             entity.HasOne(d => d.Location).WithMany(p => p.InstallationDetails)
                 .HasForeignKey(d => d.LocationId)
-                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__Installat__Locat__797309D9");
 
             entity.HasOne(d => d.Project).WithMany(p => p.InstallationDetails)
@@ -158,7 +155,6 @@ public partial class SolarnessDbContext : DbContext
 
             entity.HasOne(d => d.Project).WithMany(p => p.InstallationLocations)
                 .HasForeignKey(d => d.ProjectId)
-                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__Installat__Proje__628FA481");
         });
 
@@ -173,7 +169,6 @@ public partial class SolarnessDbContext : DbContext
 
             entity.HasOne(d => d.Project).WithMany(p => p.Milestones)
                 .HasForeignKey(d => d.ProjectId)
-                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__Milestone__Proje__3C69FB99");
         });
 
@@ -182,19 +177,14 @@ public partial class SolarnessDbContext : DbContext
             entity.HasKey(e => e.NotificationId).HasName("PK__Notifica__20CF2E1236416497");
 
             entity.Property(e => e.Content).HasColumnType("text");
+            entity.Property(e => e.Title).HasColumnType("text");
             entity.Property(e => e.SendDate)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
 
             entity.HasOne(d => d.Project).WithMany(p => p.Notifications)
                 .HasForeignKey(d => d.ProjectId)
-                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__Notificat__Proje__5EBF139D");
-
-            entity.HasOne(d => d.User).WithMany(p => p.Notifications)
-                .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FK__Notificat__UserI__5DCAEF64");
         });
 
         modelBuilder.Entity<PerformanceHistory>(entity =>
@@ -205,7 +195,6 @@ public partial class SolarnessDbContext : DbContext
 
             entity.HasOne(d => d.Panel).WithMany(p => p.PerformanceHistories)
                 .HasForeignKey(d => d.PanelId)
-                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__Performan__Panel__5535A963");
         });
 
@@ -222,7 +211,6 @@ public partial class SolarnessDbContext : DbContext
 
             entity.HasOne(d => d.Project).WithMany(p => p.Permits)
                 .HasForeignKey(d => d.ProjectId)
-                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__Permits__Project__3F466844");
         });
 
@@ -236,7 +224,6 @@ public partial class SolarnessDbContext : DbContext
 
             entity.HasOne(d => d.Project).WithMany(p => p.Predictions)
                 .HasForeignKey(d => d.ProjectId)
-                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__Predictio__Proje__59063A47");
         });
 
@@ -280,7 +267,6 @@ public partial class SolarnessDbContext : DbContext
 
             entity.HasOne(d => d.Team).WithMany(p => p.Projects)
                 .HasForeignKey(d => d.TeamId)
-                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__Projects__TeamId__38996AB5");
 
             entity.HasOne(d => d.User).WithMany(p => p.Projects)
@@ -303,7 +289,6 @@ public partial class SolarnessDbContext : DbContext
 
             entity.HasOne(d => d.Project).WithMany(p => p.ProjectPhases)
                 .HasForeignKey(d => d.ProjectId)
-                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__ProjectPh__Proje__4CA06362");
         });
 
@@ -320,7 +305,6 @@ public partial class SolarnessDbContext : DbContext
 
             entity.HasOne(d => d.Project).WithMany(p => p.ProjectStages)
                 .HasForeignKey(d => d.ProjectId)
-                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__ProjectSt__Proje__4222D4EF");
         });
 
@@ -360,7 +344,6 @@ public partial class SolarnessDbContext : DbContext
 
             entity.HasOne(d => d.Project).WithMany(p => p.SolarPanels)
                 .HasForeignKey(d => d.ProjectId)
-                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__SolarPane__Proje__5165187F");
         });
 
@@ -378,12 +361,10 @@ public partial class SolarnessDbContext : DbContext
 
             entity.HasOne(d => d.Member).WithMany(p => p.Tasks)
                 .HasForeignKey(d => d.MemberId)
-                .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("FK__Tasks__MemberId__49C3F6B7");
 
             entity.HasOne(d => d.Project).WithMany(p => p.Tasks)
                 .HasForeignKey(d => d.ProjectId)
-                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__Tasks__ProjectId__48CFD27E");
         });
 
@@ -414,12 +395,10 @@ public partial class SolarnessDbContext : DbContext
 
             entity.HasOne(d => d.Team).WithMany(p => p.TeamMembers)
                 .HasForeignKey(d => d.TeamId)
-                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__TeamMembe__TeamI__31EC6D26");
 
             entity.HasOne(d => d.User).WithMany(p => p.TeamMembers)
                 .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__TeamMembe__UserI__30F848ED");
         });
 
@@ -446,7 +425,760 @@ public partial class SolarnessDbContext : DbContext
                 .HasConstraintName("FK__Users__RoleId__286302EC");
         });
 
+        // Seed Users
+        modelBuilder.Entity<User>().HasData(
+    new User
+    {
+        UserId = 1,
+        FirstName = "John",
+        LastName = "Doe",
+        Username = "johny",
+        Email = "johndoe@email.com",
+        PhoneNumber = "123-456-7890",
+        Picture = "path/to/picture.jpg",
+        PasswordHash = "JfJzsL3ngGWki+Dn67C+8WLy73I=",  // Make sure to hash the password
+        PasswordSalt = "7TUJfmgkkDvcY3PB/M4fhg==",   // Password salt
+        RoleId = 1  // RoleId for Admin
+    },
+    new User
+    {
+        UserId = 2,
+        FirstName = "Jane",
+        LastName = "Smith",
+        Username = "janes",
+        Email = "janesmith@email.com",
+        PhoneNumber = "098-765-4321",
+        Picture = "path/to/picture2.jpg",
+        PasswordHash = "ug0GgEnT5hKaHsfTn1l1kiGvZAg=",  // Make sure to hash the password
+        PasswordSalt = "qh31pfpS2ox1h96QPhmR/Q==",   // Password salt
+        RoleId = 3  // RoleId for User
+    },
+    new User
+    {
+        UserId = 3,
+        FirstName = "Alice",
+        LastName = "Snow",
+        Username = "alice",
+        Email = "alices@email.com",
+        PhoneNumber = "123-456-7890",
+        Picture = "path/to/picture.jpg",
+        PasswordHash = "JfJzsL3ngGWki+Dn67C+8WLy73I=",  // Make sure to hash the password
+        PasswordSalt = "7TUJfmgkkDvcY3PB/M4fhg==",   // Password salt
+        RoleId = 2  // RoleId for Admin
+    }
+);
+
+
+        // Seed Roles
+        modelBuilder.Entity<Role>().HasData(
+     new Role
+     {
+         RoleId = 1,
+         Name = "Admin",
+         Description = "Administrator with full access to all system functionalities."
+     },
+     new Role
+     {
+         RoleId = 2,
+         Name = "Manager",
+         Description = "Responsible for managing projects and overseeing team members."
+     },
+     new Role
+     {
+         RoleId = 3,
+         Name = "User",
+         Description = "Regular user with access to view and interact with projects."
+     },
+     new Role
+     {
+         RoleId = 4,
+         Name = "Technician",
+         Description = "Responsible for the installation and maintenance of solar panels."
+     }
+ );
+
+
+        // Seed Homeowners
+        modelBuilder.Entity<Homeowner>().HasData(
+    new Homeowner
+    {
+        HomeownerId = 1,
+        FirstName = "John",
+        LastName = "Doe",
+        PhoneNumber = "123-456-7890",
+        Email = "johndoe@email.com",
+        Address = "123 Solar St.",
+        City = "Solar City",
+        PostalCode = "12345",
+        Country = "SolarLand"
+    },
+    new Homeowner
+    {
+        HomeownerId = 2,
+        FirstName = "Jane",
+        LastName = "Smith",
+        PhoneNumber = "987-654-3210",
+        Email = "janesmith@email.com",
+        Address = "456 Green Ave.",
+        City = "Eco Town",
+        PostalCode = "67890",
+        Country = "EcoLand"
+    },
+    new Homeowner
+    {
+        HomeownerId = 3,
+        FirstName = "Alice",
+        LastName = "Johnson",
+        PhoneNumber = "555-123-4567",
+        Email = "alicejohnson@email.com",
+        Address = "789 Windy Rd.",
+        City = "Wind City",
+        PostalCode = "11223",
+        Country = "WindLand"
+    },
+    new Homeowner
+    {
+        HomeownerId = 4,
+        FirstName = "Sam",
+        LastName = "Sam",
+        PhoneNumber = "555-123-4567",
+        Email = "alicejohnson@email.com",
+        Address = "789 Windy Rd.",
+        City = "Wind City",
+        PostalCode = "11223",
+        Country = "WindLand"
+    }
+);
+
+
+        // Seed Projects
+        modelBuilder.Entity<Project>().HasData(
+    new Project
+    {
+        ProjectId = 1,
+        ProjectName = "Solar Panel Installation for Residential Home",
+        ProjectDescription = "This project involves the installation of a solar panel system for a residential home located in the city center.",
+        StreetAddress = "123 Solar St.",
+        City = "Solar City",
+        Kw = 15.5m, // 15.5 kW
+        ContractAmount = 25000.00m,
+        SiteInspectionDate = new DateOnly(2025, 3, 10),
+        EngineeringSubmitDate = new DateOnly(2025, 3, 15),
+        EngineeringReceivedDate = new DateOnly(2025, 3, 20),
+        SaleDate = new DateOnly(2025, 2, 5),
+        Significance = "High",
+        Urgency = "Medium",
+        PriorityLevel = "High",
+        StatusId = 1, // "Planning"
+        TeamId = 1, // "Solar Installers" team
+        UserId = 1, // Admin user
+        HomeownerId = 1, // Homeowner with ID 1
+    },
+    new Project
+    {
+        ProjectId = 2,
+        ProjectName = "Commercial Solar Panel Project",
+        ProjectDescription = "A commercial solar panel installation for a local office building.",
+        StreetAddress = "456 Green Ave.",
+        City = "Solar City",
+        Kw = 100.0m, // 100 kW
+        ContractAmount = 500000.00m,
+        SiteInspectionDate = new DateOnly(2025, 4, 5),
+        EngineeringSubmitDate = new DateOnly(2025, 4, 10),
+        EngineeringReceivedDate = new DateOnly(2025, 4, 12),
+        SaleDate = new DateOnly(2025, 3, 1),
+        Significance = "Medium",
+        Urgency = "Low",
+        PriorityLevel = "Medium",
+        StatusId = 2, // "In Progress"
+        TeamId = 2, // "Commercial Solar Team"
+        UserId = 2, // Another admin user
+        HomeownerId = 2, // Commercial property owner
+    },
+     new Project
+     {
+         ProjectId = 3,
+         ProjectName = "Solar Panel Installation for Company",
+         ProjectDescription = "This project involves the installation of a solar panel system for a residential home located in the city center.",
+         StreetAddress = "123 Solar St.",
+         City = "Solar City",
+         Kw = 15.5m, // 15.5 kW
+         ContractAmount = 25000.00m,
+         SiteInspectionDate = new DateOnly(2025, 3, 10),
+         EngineeringSubmitDate = new DateOnly(2025, 3, 15),
+         EngineeringReceivedDate = new DateOnly(2025, 3, 20),
+         SaleDate = new DateOnly(2025, 2, 5),
+         Significance = "High",
+         Urgency = "Medium",
+         PriorityLevel = "High",
+         StatusId = 1, // "Planning"
+         TeamId = 1, // "Solar Installers" team
+         UserId = 1, // Admin user
+         HomeownerId = 3, // Homeowner with ID 1
+     },
+      new Project
+      {
+          ProjectId = 4,
+          ProjectName = "Solar Panel and system Installation ",
+          ProjectDescription = "This project involves the installation of a solar panel system for a residential home located in the city center.",
+          StreetAddress = "123 Solar St.",
+          City = "Solar City",
+          Kw = 15.5m, // 15.5 kW
+          ContractAmount = 25000.00m,
+          SiteInspectionDate = new DateOnly(2025, 3, 10),
+          EngineeringSubmitDate = new DateOnly(2025, 3, 15),
+          EngineeringReceivedDate = new DateOnly(2025, 3, 20),
+          SaleDate = new DateOnly(2025, 2, 5),
+          Significance = "High",
+          Urgency = "Medium",
+          PriorityLevel = "High",
+          StatusId = 1, // "Planning"
+          TeamId = 1, // "Solar Installers" team
+          UserId = 1, // Admin user
+          HomeownerId = 4, // Homeowner with ID 1
+      }
+);
+
+
+        // Seed Project Statuses
+        modelBuilder.Entity<ProjectStatus>().HasData(
+    new ProjectStatus
+    {
+        StatusId = 1,
+        StatusName = "Planning"
+    },
+    new ProjectStatus
+    {
+        StatusId = 2,
+        StatusName = "In Progress"
+    },
+    new ProjectStatus
+    {
+        StatusId = 3,
+        StatusName = "Completed"
+    },
+    new ProjectStatus
+    {
+        StatusId = 4,
+        StatusName = "On Hold"
+    },
+    new ProjectStatus
+    {
+        StatusId = 5,
+        StatusName = "Cancelled"
+    }
+);
+
+
+        // Seed Solar Panels
+        modelBuilder.Entity<SolarPanel>().HasData(
+     new SolarPanel
+     {
+         PanelId = 1,
+         ModelName = "SunPower X22-370",
+         SerialNumber = "SPX22-370-12345",
+         ProjectId = 1,
+         InstallationDate = new DateOnly(2024, 5, 15),
+         Efficiency = 22.7,
+         EnergyProduced = 5000
+     },
+     new SolarPanel
+     {
+         PanelId = 2,
+         ModelName = "LG NeON R 370W",
+         SerialNumber = "LGNR-370-67890",
+         ProjectId = 4,
+         InstallationDate = new DateOnly(2024, 6, 5),
+         Efficiency = 21.4,
+         EnergyProduced = 4000
+     },
+     new SolarPanel
+     {
+         PanelId = 3,
+         ModelName = "Canadian Solar HiKu 395W",
+         SerialNumber = "CSH395-11223",
+         ProjectId = 3,
+         InstallationDate = new DateOnly(2024, 7, 8),
+         Efficiency = 20.5,
+         EnergyProduced = 4500
+     },
+     new SolarPanel
+     {
+         PanelId = 4,
+         ModelName = "Trina Solar Vertex 400W",
+         SerialNumber = "TSV400-33445",
+         ProjectId = 1,
+         InstallationDate = new DateOnly(2024, 8, 10),
+         Efficiency = 19.9,
+         EnergyProduced = 4700
+     }
+ );
+
+
+        // Seed Installation Locations
+        modelBuilder.Entity<InstallationLocation>().HasData(
+    new InstallationLocation
+    {
+        LocationId = 1,
+        LocationName = "Solar Installation Site 1",
+        Address = "123 Solar St, Green Valley",
+        City = "Green Valley",
+        Country = "USA",
+        Latitude = 34.0522,
+        Longitude = -118.2437,
+        ProjectId = 1
+    },
+    new InstallationLocation
+    {
+        LocationId = 2,
+        LocationName = "Solar Installation Site 2",
+        Address = "456 Sunshine Rd, Tech Park",
+        City = "Tech City",
+        Country = "USA",
+        Latitude = 40.7128,
+        Longitude = -74.0060,
+        ProjectId = 2
+    },
+    new InstallationLocation
+    {
+        LocationId = 3,
+        LocationName = "Solar Installation Site 3",
+        Address = "789 Bright Ave, Oak Town",
+        City = "Oak Town",
+        Country = "Canada",
+        Latitude = 43.6517,
+        Longitude = -79.3832,
+        ProjectId = 3
+    },
+    new InstallationLocation
+    {
+        LocationId = 4,
+        LocationName = "Solar Installation Site 4",
+        Address = "101 Sunbeam Blvd, River City",
+        City = "River City",
+        Country = "Canada",
+        Latitude = 45.4215,
+        Longitude = -75.6992,
+        ProjectId = 4
+    }
+);
+
+
+        // Seed Installation Details
+        modelBuilder.Entity<InstallationDetail>().HasData(
+     new InstallationDetail
+     {
+         InstallationDetailId = 1,
+         LocationId = 1,
+         UserId = 1,
+         InstallStartDate = new DateOnly(2024, 3, 1),
+         InstallCompleteDate = new DateOnly(2024, 3, 10),
+         InstallationType = "Roof Mounted",
+         NumberOfPanels = 25,
+         Description = "Installation of 25 roof-mounted solar panels for residential project.",
+         ProjectId = 1
+     },
+     new InstallationDetail
+     {
+         InstallationDetailId = 2,
+         LocationId = 2,
+         UserId = 2,
+         InstallStartDate = new DateOnly(2024, 3, 15),
+         InstallCompleteDate = new DateOnly(2024, 3, 20),
+         InstallationType = "Ground Mounted",
+         NumberOfPanels = 40,
+         Description = "Ground-mounted solar panel system for commercial project.",
+         ProjectId = 2
+     },
+     new InstallationDetail
+     {
+         InstallationDetailId = 3,
+         LocationId = 3,
+         UserId = 3,
+         InstallStartDate = new DateOnly(2024, 4, 1),
+         InstallCompleteDate = new DateOnly(2024, 4, 7),
+         InstallationType = "Roof Mounted",
+         NumberOfPanels = 30,
+         Description = "Residential solar installation with 30 roof-mounted panels.",
+         ProjectId = 3
+     }
+     //new InstallationDetail
+     //{
+     //    InstallationDetailId = 4,
+     //    LocationId = 4,
+     //    UserId = 4,
+     //    InstallStartDate = new DateOnly(2024, 4, 5),
+     //    InstallCompleteDate = new DateOnly(2024, 4, 12),
+     //    InstallationType = "Ground Mounted",
+     //    NumberOfPanels = 50,
+     //    Description = "Installation of 50 ground-mounted solar panels at a commercial site.",
+     //    ProjectId = 4
+     //}
+ );
+
+
+        // Seed Milestones
+        modelBuilder.Entity<Milestone>().HasData(
+    new Milestone
+    {
+        MilestoneId = 1,
+        ProjectId = 1,
+        MilestoneName = "Project Kickoff",
+        MilestoneDate = new DateOnly(2024, 1, 1),
+        Description = "The project officially kicks off with team and stakeholder introductions."
+    },
+    new Milestone
+    {
+        MilestoneId = 2,
+        ProjectId = 1,
+        MilestoneName = "Design Approval",
+        MilestoneDate = new DateOnly(2024, 2, 15),
+        Description = "Final designs for the solar panel layout are approved."
+    },
+    new Milestone
+    {
+        MilestoneId = 3,
+        ProjectId = 2,
+        MilestoneName = "Permit Approval",
+        MilestoneDate = new DateOnly(2024, 3, 5),
+        Description = "The necessary permits are approved for installation."
+    },
+    new Milestone
+    {
+        MilestoneId = 4,
+        ProjectId = 2,
+        MilestoneName = "Material Procurement",
+        MilestoneDate = new DateOnly(2024, 3, 25),
+        Description = "All required materials for installation are procured."
+    },
+    new Milestone
+    {
+        MilestoneId = 5,
+        ProjectId = 3,
+        MilestoneName = "Site Preparation",
+        MilestoneDate = new DateOnly(2024, 4, 10),
+        Description = "The site is prepared for solar panel installation."
+    }
+);
+
+
+        // Seed Tasks
+        modelBuilder.Entity<Task>().HasData(
+    new Task
+    {
+        TaskId = 1,
+        TaskName = "Site Assessment",
+        Description = "Conduct initial site assessment for solar panel installation.",
+        StartDate = new DateOnly(2024, 1, 10),
+        EndDate = new DateOnly(2024, 1, 15),
+        Status = "Completed",
+        ProjectId = 1,
+        MemberId = 1
+    },
+    new Task
+    {
+        TaskId = 2,
+        TaskName = "Permit Submission",
+        Description = "Submit necessary permits for approval.",
+        StartDate = new DateOnly(2024, 2, 1),
+        EndDate = new DateOnly(2024, 2, 10),
+        Status = "In Progress",
+        ProjectId = 2,
+        MemberId = 2
+    },
+    new Task
+    {
+        TaskId = 3,
+        TaskName = "Material Procurement",
+        Description = "Order and receive necessary materials for installation.",
+        StartDate = new DateOnly(2024, 3, 5),
+        EndDate = new DateOnly(2024, 3, 20),
+        Status = "Pending",
+        ProjectId = 3,
+        MemberId = 3
+    },
+    new Task
+    {
+        TaskId = 4,
+        TaskName = "Installation",
+        Description = "Complete solar panel installation on-site.",
+        StartDate = new DateOnly(2024, 4, 10),
+        EndDate = new DateOnly(2024, 4, 25),
+        Status = "Scheduled",
+        ProjectId = 4,
+        MemberId = 2
+    }
+);
+
+
+        // Seed Financing
+        modelBuilder.Entity<Financing>().HasData(
+     new Financing
+     {
+         FinancingId = 1,
+         ProjectId = 1,
+         FinancingName = "Government Subsidy",
+         FinancingAmount = 50000.00m,
+         FinancingDate = new DateOnly(2024, 1, 15)
+     },
+     new Financing
+     {
+         FinancingId = 2,
+         ProjectId = 2,
+         FinancingName = "Bank Loan",
+         FinancingAmount = 75000.00m,
+         FinancingDate = new DateOnly(2024, 2, 20)
+     },
+     new Financing
+     {
+         FinancingId = 3,
+         ProjectId = 3,
+         FinancingName = "Private Investment",
+         FinancingAmount = 100000.00m,
+         FinancingDate = new DateOnly(2024, 3, 5)
+     },
+     new Financing
+     {
+         FinancingId = 4,
+         ProjectId = 4,
+         FinancingName = "Crowdfunding",
+         FinancingAmount = 25000.00m,
+         FinancingDate = new DateOnly(2024, 4, 10)
+     }
+ );
+
+
+        // Seed Documentation
+        modelBuilder.Entity<Documentation>().HasData(
+    new Documentation
+    {
+        DocumentId = 1,
+        DocumentName = "Site Plan",
+        DocumentType = "PDF",
+        DocumentLocation = "/documents/site_plan_1.pdf",
+        ProjectId = 1,
+        AdditionDate = new DateOnly(2024, 1, 10)
+    },
+    new Documentation
+    {
+        DocumentId = 2,
+        DocumentName = "Permit Approval",
+        DocumentType = "PDF",
+        DocumentLocation = "/documents/permit_approval_1.pdf",
+        ProjectId = 1,
+        AdditionDate = new DateOnly(2024, 2, 5)
+    },
+    new Documentation
+    {
+        DocumentId = 3,
+        DocumentName = "Electrical Layout",
+        DocumentType = "DWG",
+        DocumentLocation = "/documents/electrical_layout_2.dwg",
+        ProjectId = 2,
+        AdditionDate = new DateOnly(2024, 3, 15)
+    },
+    new Documentation
+    {
+        DocumentId = 4,
+        DocumentName = "Inspection Report",
+        DocumentType = "DOCX",
+        DocumentLocation = "/documents/inspection_report_3.docx",
+        ProjectId = 3,
+        AdditionDate = new DateOnly(2024, 4, 2)
+    }
+);
+
+
+        // Seed Permits
+        modelBuilder.Entity<Permit>().HasData(
+     new Permit
+     {
+         PermitId = 1,
+         ProjectId = 1,
+         PermitSubmitDate = new DateOnly(2024, 2, 10),
+         PermitReceivedDate = new DateOnly(2024, 2, 20),
+         PermitType = "Construction",
+         Status = "Approved",
+         LastUpdatedDate = new DateOnly(2024, 2, 21)
+     },
+     new Permit
+     {
+         PermitId = 2,
+         ProjectId = 2,
+         PermitSubmitDate = new DateOnly(2024, 3, 1),
+         PermitReceivedDate = null,  // Still in process
+         PermitType = "Environmental",
+         Status = "Pending",
+         LastUpdatedDate = new DateOnly(2024, 3, 5)
+     },
+     new Permit
+     {
+         PermitId = 3,
+         ProjectId = 3,
+         PermitSubmitDate = new DateOnly(2024, 1, 15),
+         PermitReceivedDate = new DateOnly(2024, 1, 30),
+         PermitType = "Electrical",
+         Status = "Approved",
+         LastUpdatedDate = new DateOnly(2024, 2, 1)
+     }
+ );
+
+
+        // Seed Notifications
+        modelBuilder.Entity<Notification>().HasData(
+    new Notification
+    {
+        NotificationId = 1,
+        ProjectId = 1,
+        Title = "Project Approved",
+        Content = "Your solar project has been approved and is ready for the next phase.",
+        SendDate = new DateTime(2024, 3, 1, 10, 0, 0)
+    },
+    new Notification
+    {
+        NotificationId = 2,
+        ProjectId = 2,
+        Title = "Installation Scheduled",
+        Content = "The installation for your project is scheduled for next week.",
+        SendDate = new DateTime(2024, 3, 5, 14, 30, 0)
+    },
+    new Notification
+    {
+        NotificationId = 3,
+        ProjectId = 1,
+        Title = "Final Inspection",
+        Content = "Your solar panel installation has been completed. A final inspection is scheduled.",
+        SendDate = new DateTime(2024, 3, 10, 9, 15, 0)
+    }
+);
+
+        // Seed Performance History
+        //modelBuilder.Entity<PerformanceHistory>().HasData(
+        //    new PerformanceHistory { Id = 1, ProjectId = 1, EnergyGenerated = 500, DateRecorded = DateTime.UtcNow }
+        //);
+
+        // Seed Predictions
+        //modelBuilder.Entity<Prediction>().HasData(
+        //    new Prediction { Id = 1, ProjectId = 1, PredictedEnergyOutput = 5200, PredictionDate = DateTime.UtcNow }
+        //);
+
+        // Seed Teams
+        modelBuilder.Entity<Team>().HasData(
+    new Team
+    {
+        TeamId = 1,
+        TeamName = "Solar Installers",
+        Description = "Team responsible for installing solar panels.",
+        CreationDate = new DateTime(2024, 1, 15),
+        UserId = 1
+    },
+    new Team
+    {
+        TeamId = 2,
+        TeamName = "Project Engineers",
+        Description = "Engineers overseeing solar panel projects.",
+        CreationDate = new DateTime(2024, 2, 10),
+        UserId = 2
+    }
+);
+
+        // Seed Team Members
+        modelBuilder.Entity<TeamMember>().HasData(
+    new TeamMember
+    {
+        MemberId = 1,
+        TeamId = 1,
+        UserId = 1
+    },
+    new TeamMember
+    {
+        MemberId = 2,
+        TeamId = 1,
+        UserId = 2
+    },
+    new TeamMember
+    {
+        MemberId = 3,
+        TeamId = 2,
+        UserId = 3
+    }
+);
+
+        // Seed Project Phases
+        modelBuilder.Entity<ProjectPhase>().HasData(
+    new ProjectPhase
+    {
+        PhaseId = 1,
+        ProjectId = 1,
+        PhaseName = "Planning",
+        Description = "Initial phase for project feasibility and design",
+        StartDate = new DateOnly(2024, 2, 1),
+        EndDate = new DateOnly(2024, 2, 28),
+        Status = "Completed"
+    },
+    new ProjectPhase
+    {
+        PhaseId = 2,
+        ProjectId = 1,
+        PhaseName = "Permitting",
+        Description = "Regulatory approvals and paperwork processing",
+        StartDate = new DateOnly(2024, 3, 1),
+        EndDate = new DateOnly(2024, 3, 20),
+        Status = "In Progress"
+    },
+    new ProjectPhase
+    {
+        PhaseId = 3,
+        ProjectId = 1,
+        PhaseName = "Installation",
+        Description = "Solar panels and system installation on-site",
+        StartDate = new DateOnly(2024, 3, 22),
+        EndDate = new DateOnly(2024, 4, 10),
+        Status = "Not Started"
+    }
+);
+
+
+        // Seed Project Stages
+        modelBuilder.Entity<ProjectStage>().HasData(
+            new ProjectStage
+            {
+                StageId = 1,
+                ProjectId = 1,
+                StageName = "Initial Site Survey",
+                StageGroup = "Planning",
+                StageStartDate = new DateOnly(2024, 3, 1),
+                StageEndDate = new DateOnly(2024, 3, 5),
+                DaysInStage = 5,
+                StageUpdatedDate = new DateOnly(2024, 3, 6)
+            },
+    new ProjectStage
+    {
+        StageId = 2,
+        ProjectId = 1,
+        StageName = "Permit Approval",
+        StageGroup = "Regulatory",
+        StageStartDate = new DateOnly(2024, 3, 6),
+        StageEndDate = new DateOnly(2024, 3, 20),
+        DaysInStage = 15,
+        StageUpdatedDate = new DateOnly(2024, 3, 21)
+    },
+    new ProjectStage
+    {
+        StageId = 3,
+        ProjectId = 1,
+        StageName = "Panel Installation",
+        StageGroup = "Construction",
+        StageStartDate = new DateOnly(2024, 3, 22),
+        StageEndDate = new DateOnly(2024, 4, 1),
+        DaysInStage = 10,
+        StageUpdatedDate = new DateOnly(2024, 4, 2)
+    }
+        );
+
         OnModelCreatingPartial(modelBuilder);
+
+
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

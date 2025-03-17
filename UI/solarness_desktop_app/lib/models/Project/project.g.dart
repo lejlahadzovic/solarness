@@ -36,6 +36,7 @@ Project _$ProjectFromJson(Map<String, dynamic> json) => Project(
       json['team'] == null
           ? null
           : Team.fromJson(json['team'] as Map<String, dynamic>),
+      (json['contractAmount'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$ProjectToJson(Project instance) => <String, dynamic>{
@@ -45,6 +46,7 @@ Map<String, dynamic> _$ProjectToJson(Project instance) => <String, dynamic>{
       'streetAddress': instance.streetAddress,
       'city': instance.city,
       'kw': instance.kw,
+      'contractAmount': instance.contractAmount,
       'siteInspectionDate': instance.siteInspectionDate?.toIso8601String(),
       'engineeringSubmitDate':
           instance.engineeringSubmitDate?.toIso8601String(),

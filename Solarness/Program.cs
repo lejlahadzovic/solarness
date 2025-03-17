@@ -5,6 +5,7 @@ using Solarness;
 using Solarness.Services.Database;
 using Solarness.Services.Interface;
 using Solarness.Services.Service;
+using Solarness.Services.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,8 @@ builder.Services.AddTransient<ITeamMemberService, TeamMemberService>();
 builder.Services.AddTransient<IPermitService, PermitService>();
 builder.Services.AddTransient<ITeamService, TeamService>();
 builder.Services.AddTransient<ITaskService, TaskService>();
+builder.Services.AddTransient<INotificationService, ObavijestiService>();
+builder.Services.AddTransient<ObavijestiService>();
 builder.Services.AddTransient<IProjectStatusService, ProjectStatusService>();
 builder.Services.AddTransient<ISolarPanelService, SolarPanelService>();
 

@@ -52,20 +52,20 @@ class _UsersListScreenState extends State<UsersListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF1E1E1E), // Dark background color
+      backgroundColor: Colors.white, // Light white background
       appBar: AppBar(
-        backgroundColor: Colors.transparent, // Transparent AppBar
+        backgroundColor: Colors.white, // White AppBar background
         title: Text(
           'Inbox',
           style: TextStyle(
-            color: Color(0xFFFFD700), // Softer yellow
+            color: Color(0xFFFFD700), // Softer yellow for title text
             fontWeight: FontWeight.w700,
             fontSize: 24,
           ),
         ),
         elevation: 0,
         iconTheme: IconThemeData(
-          color: Color(0xFFFFD700), // Softer yellow for back arrow
+          color: Color(0xFFFFD700), // Softer yellow for icons
         ),
       ),
       body: _isLoading
@@ -102,7 +102,7 @@ class _UsersListScreenState extends State<UsersListScreen> {
                         Container(
                           width: 200, // Adjusted width of the user list
                           padding: EdgeInsets.all(8),
-                          color: Color(0xFF2A2A2A), // Dark background for the user list
+                          color: Color(0xFFF8F8F8), // Light grey background for the user list
                           child: ListView.builder(
                             itemCount: _users.length,
                             itemBuilder: (context, index) {
@@ -124,13 +124,13 @@ class _UsersListScreenState extends State<UsersListScreen> {
                                       });
                                     },
                                     borderRadius: BorderRadius.circular(16),
-                                    splashColor: Color(0x33FFD700),
+                                    splashColor: Color(0xFFFFD700), // Softer yellow splash color
                                     highlightColor: Colors.transparent,
                                     child: Ink(
                                       decoration: BoxDecoration(
                                         color: _selectedUser?.userId == user.userId
-                                            ? Color(0xFF444444) // Highlight selected user
-                                            : Color(0xFF2A2A2A),
+                                            ? Color(0xFFFFF3CD) // Light yellow for selected user
+                                            : Color(0xFFF8F8F8),
                                         borderRadius: BorderRadius.circular(16),
                                       ),
                                       child: ListTile(
@@ -149,7 +149,7 @@ class _UsersListScreenState extends State<UsersListScreen> {
                                         title: Text(
                                           user.firstName! + ' ' + user.lastName!,
                                           style: TextStyle(
-                                            color: Colors.white, // White for the title text
+                                            color: Colors.black, // Black for the title text
                                             fontWeight: FontWeight.w500,
                                             fontSize: 14, // Smaller font size for names
                                           ),

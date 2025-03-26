@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:solarness_desktop_app/models/TeamMember/team_memeber.dart';
+import 'package:solarness_desktop_app/screens/taskdialog.dart';
 import '../models/Project/project.dart';
 import '../models/Task/task.dart';
 import '../providers/project_provider.dart';
@@ -21,7 +22,7 @@ class _TaskScreenState extends State<TaskScreen> {
   bool _isLoading = true;
   Task? _selectedTask;
   late TaskProvider _taskProvider;
-  
+
   @override
   void initState() {
     super.initState();
@@ -52,9 +53,6 @@ class _TaskScreenState extends State<TaskScreen> {
     });
   }
 
-  void _editTask(Task task) {
-    // Show edit task form (implementation needed)
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,9 +79,16 @@ class _TaskScreenState extends State<TaskScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {}, // Implement add task
-        child: Icon(Icons.add),
-        backgroundColor: Colors.orange,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => TaskDetailsDialog(),
+            ),
+          );
+        },
+        backgroundColor: Color(0xFFFFD700),
+        child: Icon(Icons.add, color: Colors.black),
       ),
     );
   }
@@ -104,13 +109,24 @@ class _TaskScreenState extends State<TaskScreen> {
                   ),
                   child: ListTile(
                     title: Text(task.taskName ?? "Unnamed Task"),
-                    subtitle: Text("Due: ${DateFormat.yMMMd().format(task.endDate!)}"),
+                    subtitle: Text(
+                        "Due: ${DateFormat.yMMMd().format(task.endDate!)}"),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         IconButton(
                           icon: Icon(Icons.edit, color: Colors.grey),
-                          onPressed: () => _editTask(task),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    TaskDetailsDialog(task: task),
+                              ),
+                            ).then((value) {
+                              _fetchTasks();
+                            });
+                          },
                         ),
                         IconButton(
                           icon: Icon(Icons.delete, color: Colors.red),
@@ -150,7 +166,8 @@ class _TaskScreenState extends State<TaskScreen> {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           SizedBox(height: 16),
-          Text("Description: ${task.description ?? 'No description available.'}"),
+          Text(
+              "Description: ${task.description ?? 'No description available.'}"),
           SizedBox(height: 16),
           Text("Start Date: ${DateFormat.yMMMd().format(task.startDate!)}"),
           SizedBox(height: 16),

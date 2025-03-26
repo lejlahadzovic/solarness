@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:solarness_desktop_app/models/Project/project.dart';
 import 'package:solarness_desktop_app/providers/project_provider.dart';
 import 'package:solarness_desktop_app/screens/project_dialog_screen.dart';
+import 'package:solarness_desktop_app/screens/report.dart';
 
 class ProjectPage extends StatefulWidget {
   final Project? project;
@@ -12,6 +13,7 @@ class ProjectPage extends StatefulWidget {
   @override
   _ProjectPageState createState() => _ProjectPageState();
 }
+
 class _ProjectPageState extends State<ProjectPage> {
   // Existing fields
   List<Project> _projects = [];
@@ -116,85 +118,107 @@ class _ProjectPageState extends State<ProjectPage> {
             )
           : Row(
               children: [
-               Column(
-  children: [
-    Expanded(
-      child: Container(
-        width: 350,
-        decoration: BoxDecoration(
-          color: Color(0xFFF3F3F3),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              offset: Offset(0, 5),
-              blurRadius: 10,
-            ),
-          ],
-        ),
-        child: ListView.builder(
-          padding: EdgeInsets.all(10),
-          itemCount: _projects.length,
-          itemBuilder: (context, index) {
-            final project = _projects[index];
-            return Card(
-              color: Color(0xFFF9F9F9),
-              elevation: 4,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              margin: EdgeInsets.only(bottom: 10),
-              child: ListTile(
-                leading: CircleAvatar(
-                  backgroundColor: Color(0xFFFFD700),
-                  child: Text(
-                    (index + 1).toString(),
-                    style: TextStyle(color: Colors.black),
-                  ),
+                Column(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        width: 350,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFF3F3F3),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.1),
+                              offset: Offset(0, 5),
+                              blurRadius: 10,
+                            ),
+                          ],
+                        ),
+                        child: ListView.builder(
+                          padding: EdgeInsets.all(10),
+                          itemCount: _projects.length,
+                          itemBuilder: (context, index) {
+                            final project = _projects[index];
+                            return Card(
+                              color: Color(0xFFF9F9F9),
+                              elevation: 4,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              margin: EdgeInsets.only(bottom: 10),
+                              child: ListTile(
+                                leading: CircleAvatar(
+                                  backgroundColor: Color(0xFFFFD700),
+                                  child: Text(
+                                    (index + 1).toString(),
+                                    style: TextStyle(color: Colors.black),
+                                  ),
+                                ),
+                                title: Text(
+                                  project.projectName ?? "Unnamed Project",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                subtitle: Text(
+                                  project.city ?? "Unknown City",
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    _selectedProject = project;
+                                  });
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProjectReportDialog(
+                              projects: _projects,
+                            ),
+                          ),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.orange,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
+                      child: Text("Report"),
+                    ),
+                    SizedBox(height: 10),
+                    ElevatedButton.icon(
+                      onPressed: () async {
+                        try {
+                          final file = await _projectProvider.predictEnergy();
+                          if (file != null) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                  content:
+                                      Text("File downloaded to: ${file.path}")),
+                            );
+                          }
+                        } catch (e) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text("Download failed: $e")),
+                          );
+                        }
+                      },
+                      icon: Icon(Icons.download, color: Colors.white),
+                      label: Text("Download annual energy production report"),
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xFFFFD700)),
+                    ),
+                  ],
                 ),
-                title: Text(
-                  project.projectName ?? "Unnamed Project",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                subtitle: Text(
-                  project.city ?? "Unknown City",
-                  style: TextStyle(color: Colors.grey),
-                ),
-                onTap: () {
-                  setState(() {
-                    _selectedProject = project;
-                  });
-                },
-              ),
-            );
-          },
-        ),
-      ),
-    ),
-    SizedBox(height: 10), // Adds spacing before the button
-    ElevatedButton.icon(
-      onPressed: () async {
-        try {
-          final file = await _projectProvider.predictEnergy();
-          if (file != null) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text("File downloaded to: ${file.path}")),
-            );
-          }
-        } catch (e) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("Download failed: $e")),
-          );
-        }
-      },
-      icon: Icon(Icons.download, color: Colors.white),
-      label: Text("Download annual energy production report"),
-      style: ElevatedButton.styleFrom(backgroundColor: Color(0xFFFFD700)),
-    ),
-  ],
-),
                 Expanded(
                   child: _selectedProject == null
                       ? Center(
@@ -218,7 +242,8 @@ class _ProjectPageState extends State<ProjectPage> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      _selectedProject!.projectName ?? "Unnamed Project",
+                                      _selectedProject!.projectName ??
+                                          "Unnamed Project",
                                       style: TextStyle(
                                         color: Color(0xFFFFD700),
                                         fontSize: 28,
@@ -227,53 +252,101 @@ class _ProjectPageState extends State<ProjectPage> {
                                     ),
                                     Divider(color: Colors.grey),
                                     SizedBox(height: 10),
-                                    _buildDetailRow("Description", _selectedProject!.projectDescription),
-                                    _buildDetailRow("City", _selectedProject!.city),
-                                    _buildDetailRow("Street Address", _selectedProject!.streetAddress),
-                                    _buildDetailRow("KW", "${_selectedProject!.kw ?? 0} KW"),
-                                    _buildDetailRow("Contract Amount", _selectedProject!.contractAmount != null
-                                        ? "\$${_selectedProject!.contractAmount!.toStringAsFixed(2)}"
-                                        : null),
-                                    _buildDetailRow("Site Inspection Date", _selectedProject!.siteInspectionDate != null
-                                        ? _selectedProject!.siteInspectionDate!.toLocal().toString().split(' ')[0]
-                                        : null),
-                                    _buildDetailRow("Engineering Submit Date", _selectedProject!.engineeringSubmitDate != null
-                                        ? _selectedProject!.engineeringSubmitDate!.toLocal().toString().split(' ')[0]
-                                        : null),
-                                    _buildDetailRow("Engineering Received Date", _selectedProject!.engineeringReceivedDate != null
-                                        ? _selectedProject!.engineeringReceivedDate!.toLocal().toString().split(' ')[0]
-                                        : null),
-                                    _buildDetailRow("Sale Date", _selectedProject!.saleDate != null
-                                        ? _selectedProject!.saleDate!.toLocal().toString().split(' ')[0]
-                                        : null),
-                                    _buildDetailRow("Significance", _selectedProject!.significance),
-                                    _buildDetailRow("Urgency", _selectedProject!.urgency),
-                                    _buildDetailRow("Priority Level", _selectedProject!.priorityLevel),
-                                    _buildDetailRow("Status", _selectedProject!.status?.statusName),
-                                    _buildDetailRow("Team", _selectedProject!.team?.teamName),
-
+                                    _buildDetailRow("Description",
+                                        _selectedProject!.projectDescription),
+                                    _buildDetailRow(
+                                        "City", _selectedProject!.city),
+                                    _buildDetailRow("Street Address",
+                                        _selectedProject!.streetAddress),
+                                    _buildDetailRow("KW",
+                                        "${_selectedProject!.kw ?? 0} KW"),
+                                    _buildDetailRow(
+                                        "Contract Amount",
+                                        _selectedProject!.contractAmount != null
+                                            ? "\$${_selectedProject!.contractAmount!.toStringAsFixed(2)}"
+                                            : null),
+                                    _buildDetailRow(
+                                        "Site Inspection Date",
+                                        _selectedProject!.siteInspectionDate !=
+                                                null
+                                            ? _selectedProject!
+                                                .siteInspectionDate!
+                                                .toLocal()
+                                                .toString()
+                                                .split(' ')[0]
+                                            : null),
+                                    _buildDetailRow(
+                                        "Engineering Submit Date",
+                                        _selectedProject!
+                                                    .engineeringSubmitDate !=
+                                                null
+                                            ? _selectedProject!
+                                                .engineeringSubmitDate!
+                                                .toLocal()
+                                                .toString()
+                                                .split(' ')[0]
+                                            : null),
+                                    _buildDetailRow(
+                                        "Engineering Received Date",
+                                        _selectedProject!
+                                                    .engineeringReceivedDate !=
+                                                null
+                                            ? _selectedProject!
+                                                .engineeringReceivedDate!
+                                                .toLocal()
+                                                .toString()
+                                                .split(' ')[0]
+                                            : null),
+                                    _buildDetailRow(
+                                        "Sale Date",
+                                        _selectedProject!.saleDate != null
+                                            ? _selectedProject!.saleDate!
+                                                .toLocal()
+                                                .toString()
+                                                .split(' ')[0]
+                                            : null),
+                                    _buildDetailRow("Significance",
+                                        _selectedProject!.significance),
+                                    _buildDetailRow(
+                                        "Urgency", _selectedProject!.urgency),
+                                    _buildDetailRow("Priority Level",
+                                        _selectedProject!.priorityLevel),
+                                    _buildDetailRow("Status",
+                                        _selectedProject!.status?.statusName),
+                                    _buildDetailRow("Team",
+                                        _selectedProject!.team?.teamName),
                                     SizedBox(height: 20),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         ElevatedButton.icon(
                                           onPressed: () {
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                builder: (context) => ProjectDetailsDialog(project: _selectedProject!),
+                                                builder: (context) =>
+                                                    ProjectDetailsDialog(
+                                                        project:
+                                                            _selectedProject!),
                                               ),
                                             );
                                           },
-                                          icon: Icon(Icons.edit, color: Colors.black),
+                                          icon: Icon(Icons.edit,
+                                              color: Colors.black),
                                           label: Text("Edit"),
-                                          style: ElevatedButton.styleFrom(backgroundColor: Color(0xFFFFD700)),
+                                          style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  Color(0xFFFFD700)),
                                         ),
                                         ElevatedButton.icon(
                                           onPressed: _deleteProject,
-                                          icon: Icon(Icons.delete, color: Colors.black),
+                                          icon: Icon(Icons.delete,
+                                              color: Colors.black),
                                           label: Text("Delete"),
-                                          style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
+                                          style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  Colors.redAccent),
                                         ),
                                       ],
                                     ),
@@ -289,4 +362,3 @@ class _ProjectPageState extends State<ProjectPage> {
     );
   }
 }
-

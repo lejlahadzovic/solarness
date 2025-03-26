@@ -20,6 +20,7 @@ builder.Services.AddTransient<IInstallationLocationService, InstallationLocation
 builder.Services.AddTransient<ITeamMemberService, TeamMemberService>();
 builder.Services.AddTransient<IPermitService, PermitService>();
 builder.Services.AddTransient<ITeamService, TeamService>();
+builder.Services.AddTransient<IRoleService, RoleService>();
 builder.Services.AddTransient<ITaskService, TaskService>();
 builder.Services.AddTransient<INotificationService, ObavijestiService>();
 builder.Services.AddTransient<ObavijestiService>();

@@ -56,10 +56,8 @@ namespace Solarness.Services.Service
         }
         public override IQueryable<Database.User> AddInclude(IQueryable<Database.User> query, UserSearchObject? search = null)
         {
-            if (search?.IsRoleIncluded == true)
-            {
-                query = query.Include("Role");
-            }
+                query = query.Include(r=>r.Role);
+            
             return base.AddInclude(query, search);
         }
         public async Task<Model.User> Login(string username, string password)

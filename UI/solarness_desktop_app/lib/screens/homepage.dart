@@ -6,6 +6,7 @@ import 'package:solarness_desktop_app/providers/task_provider.dart';
 import 'package:solarness_desktop_app/models/Project/project.dart';
 import 'package:solarness_desktop_app/providers/project_provider.dart';
 import 'package:solarness_desktop_app/screens/teams_screen.dart';
+import 'package:solarness_desktop_app/screens/users_screen.dart';
 import 'chat_page.dart';
 import 'project_screen.dart';
 import 'tasks_screen.dart';
@@ -181,6 +182,18 @@ class _HomePageState extends State<HomePage> {
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) => UsersListScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                      _buildMenuItem(
+                        icon: Icons.man,
+                        title: 'User',
+                        isSelected: !isCollapsed,
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => UserScreen(),
                             ),
                           );
                         },

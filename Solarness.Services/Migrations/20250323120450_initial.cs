@@ -506,7 +506,17 @@ namespace Solarness.Services.Migrations
                     { 1, "123 Solar St.", "Solar City", "SolarLand", "johndoe@email.com", "John", "Doe", "123-456-7890", "12345" },
                     { 2, "456 Green Ave.", "Eco Town", "EcoLand", "janesmith@email.com", "Jane", "Smith", "987-654-3210", "67890" },
                     { 3, "789 Windy Rd.", "Wind City", "WindLand", "alicejohnson@email.com", "Alice", "Johnson", "555-123-4567", "11223" },
-                    { 4, "789 Windy Rd.", "Wind City", "WindLand", "alicejohnson@email.com", "Sam", "Sam", "555-123-4567", "11223" }
+                    { 4, "789 Windy Rd.", "Wind City", "WindLand", "alicejohnson@email.com", "Sam", "Sam", "555-123-4567", "11223" },
+                    { 5, "321 Sunbeam St.", "Solar City", "SolarLand", "michaelbrown@email.com", "Michael", "Brown", "222-333-4444", "54321" },
+                    { 6, "654 Eco Dr.", "Eco Town", "EcoLand", "emilydavis@email.com", "Emily", "Davis", "111-222-3333", "98765" },
+                    { 7, "147 Solar Panel Ln.", "Green Valley", "SolarLand", "robertwilson@email.com", "Robert", "Wilson", "777-888-9999", "56789" },
+                    { 8, "369 Renewable Ct.", "Eco Town", "EcoLand", "lauramartinez@email.com", "Laura", "Martinez", "666-777-8888", "34567" },
+                    { 9, "258 Sustainable St.", "Wind City", "WindLand", "davidanderson@email.com", "David", "Anderson", "444-555-6666", "23456" },
+                    { 10, "159 Bright Future Blvd.", "Solar City", "SolarLand", "sophiataylor@email.com", "Sophia", "Taylor", "888-999-0000", "67890" },
+                    { 11, "753 Green Energy Ave.", "Eco Town", "EcoLand", "jamesharris@email.com", "James", "Harris", "333-444-5555", "13579" },
+                    { 12, "951 Wind Power Rd.", "Wind City", "WindLand", "isabellawhite@email.com", "Isabella", "White", "222-111-0000", "98712" },
+                    { 13, "852 Solar Horizon St.", "Solar City", "SolarLand", "williamthompson@email.com", "William", "Thompson", "777-666-5555", "36985" },
+                    { 14, "456 Renewable Future Blvd.", "Green Valley", "EcoLand", "oliviagarcia@email.com", "Olivia", "Garcia", "999-888-7777", "21478" }
                 });
 
             migrationBuilder.InsertData(
@@ -528,7 +538,7 @@ namespace Solarness.Services.Migrations
                 {
                     { 1, "Administrator with full access to all system functionalities.", "Admin" },
                     { 2, "Responsible for managing projects and overseeing team members.", "Manager" },
-                    { 3, "Regular user with access to view and interact with projects.", "User" },
+                    { 3, "Regular user with access to view and interact with projects.", "Panel installer" },
                     { 4, "Responsible for the installation and maintenance of solar panels.", "Technician" }
                 });
 
@@ -539,7 +549,17 @@ namespace Solarness.Services.Migrations
                 {
                     { 1, "johndoe@email.com", "John", "Doe", "JfJzsL3ngGWki+Dn67C+8WLy73I=", "7TUJfmgkkDvcY3PB/M4fhg==", "123-456-7890", "path/to/picture.jpg", 1, "johny" },
                     { 2, "janesmith@email.com", "Jane", "Smith", "ug0GgEnT5hKaHsfTn1l1kiGvZAg=", "qh31pfpS2ox1h96QPhmR/Q==", "098-765-4321", "path/to/picture2.jpg", 3, "janes" },
-                    { 3, "alices@email.com", "Alice", "Snow", "JfJzsL3ngGWki+Dn67C+8WLy73I=", "7TUJfmgkkDvcY3PB/M4fhg==", "123-456-7890", "path/to/picture.jpg", 2, "alice" }
+                    { 3, "alices@email.com", "Alice", "Snow", "JfJzsL3ngGWki+Dn67C+8WLy73I=", "7TUJfmgkkDvcY3PB/M4fhg==", "123-456-7890", "path/to/picture.jpg", 2, "alice" },
+                    { 4, "robertj@email.com", "Robert", "Johnson", "hJfJzsL3ngGWki+Dn67C+8WLy73I=", "9TUJfmgkkDvcY3PB/M4fhg==", "321-654-0987", "path/to/picture4.jpg", 2, "robertj" },
+                    { 5, "emilyc@email.com", "Emily", "Clark", "oJfJzsL3ngGWki+Dn67C+8WLy73I=", "8TUJfmgkkDvcY3PB/M4fhg==", "456-123-7890", "path/to/picture5.jpg", 3, "emilyc" },
+                    { 6, "danbrown@email.com", "Daniel", "Brown", "pJfJzsL3ngGWki+Dn67C+8WLy73I=", "6TUJfmgkkDvcY3PB/M4fhg==", "987-654-3210", "path/to/picture6.jpg", 1, "danbrown" },
+                    { 7, "sophiam@email.com", "Sophia", "Miller", "qJfJzsL3ngGWki+Dn67C+8WLy73I=", "5TUJfmgkkDvcY3PB/M4fhg==", "789-012-3456", "path/to/picture7.jpg", 4, "sophiam" },
+                    { 8, "michaeld@email.com", "Michael", "Davis", "rJfJzsL3ngGWki+Dn67C+8WLy73I=", "4TUJfmgkkDvcY3PB/M4fhg==", "345-678-9012", "path/to/picture8.jpg", 3, "michaeld" },
+                    { 9, "oliviaw@email.com", "Olivia", "Wilson", "sJfJzsL3ngGWki+Dn67C+8WLy73I=", "3TUJfmgkkDvcY3PB/M4fhg==", "654-321-0987", "path/to/picture9.jpg", 4, "oliviaw" },
+                    { 10, "williamand@email.com", "William", "Anderson", "tJfJzsL3ngGWki+Dn67C+8WLy73I=", "2TUJfmgkkDvcY3PB/M4fhg==", "231-546-7890", "path/to/picture10.jpg", 3, "williamand" },
+                    { 11, "jamesm@email.com", "James", "Martinez", "uJfJzsL3ngGWki+Dn67C+8WLy73I=", "1TUJfmgkkDvcY3PB/M4fhg==", "123-789-4560", "path/to/picture11.jpg", 2, "jamesm" },
+                    { 12, "isabellag@email.com", "Isabella", "Garcia", "vJfJzsL3ngGWki+Dn67C+8WLy73I=", "0TUJfmgkkDvcY3PB/M4fhg==", "789-456-1230", "path/to/picture12.jpg", 3, "isabellag" },
+                    { 13, "davidt@email.com", "David", "Taylor", "wJfJzsL3ngGWki+Dn67C+8WLy73I=", "zTUJfmgkkDvcY3PB/M4fhg==", "567-890-1234", "path/to/picture13.jpg", 4, "davidt" }
                 });
 
             migrationBuilder.InsertData(
@@ -548,7 +568,17 @@ namespace Solarness.Services.Migrations
                 values: new object[,]
                 {
                     { 1, new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Team responsible for installing solar panels.", "Solar Installers", 1 },
-                    { 2, new DateTime(2024, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Engineers overseeing solar panel projects.", "Project Engineers", 2 }
+                    { 2, new DateTime(2024, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Engineers overseeing solar panel projects.", "Project Engineers", 2 },
+                    { 3, new DateTime(2024, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Team responsible for handling electrical components of solar projects.", "Electrical Technicians", 3 },
+                    { 4, new DateTime(2024, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Team ensuring project sites meet installation requirements.", "Site Inspectors", 4 },
+                    { 5, new DateTime(2024, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Team handling sales and customer relationships.", "Sales & Client Relations", 5 },
+                    { 6, new DateTime(2024, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "Team responsible for securing necessary permits.", "Permitting Specialists", 6 },
+                    { 7, new DateTime(2024, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), "Team handling orders and materials for projects.", "Material Procurement", 7 },
+                    { 8, new DateTime(2024, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Team responsible for checking installation quality.", "Quality Assurance", 8 },
+                    { 9, new DateTime(2024, 6, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Team providing maintenance and troubleshooting support.", "Maintenance & Support", 9 },
+                    { 10, new DateTime(2024, 7, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Team advising on energy efficiency and renewable solutions.", "Renewable Energy Consultants", 10 },
+                    { 11, new DateTime(2024, 7, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Team specializing in battery storage solutions for solar projects.", "Battery Storage Experts", 11 },
+                    { 12, new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Team handling integration of solar systems with the power grid.", "Grid Integration Specialists", 12 }
                 });
 
             migrationBuilder.InsertData(
@@ -559,7 +589,15 @@ namespace Solarness.Services.Migrations
                     { 1, "Solar City", 25000.00m, new DateOnly(2025, 3, 20), new DateOnly(2025, 3, 15), 1, 15.5m, "High", "This project involves the installation of a solar panel system for a residential home located in the city center.", "Solar Panel Installation for Residential Home", new DateOnly(2025, 2, 5), "High", new DateOnly(2025, 3, 10), 1, "123 Solar St.", 1, "Medium", 1 },
                     { 2, "Solar City", 500000.00m, new DateOnly(2025, 4, 12), new DateOnly(2025, 4, 10), 2, 100.0m, "Medium", "A commercial solar panel installation for a local office building.", "Commercial Solar Panel Project", new DateOnly(2025, 3, 1), "Medium", new DateOnly(2025, 4, 5), 2, "456 Green Ave.", 2, "Low", 2 },
                     { 3, "Solar City", 25000.00m, new DateOnly(2025, 3, 20), new DateOnly(2025, 3, 15), 3, 15.5m, "High", "This project involves the installation of a solar panel system for a residential home located in the city center.", "Solar Panel Installation for Company", new DateOnly(2025, 2, 5), "High", new DateOnly(2025, 3, 10), 1, "123 Solar St.", 1, "Medium", 1 },
-                    { 4, "Solar City", 25000.00m, new DateOnly(2025, 3, 20), new DateOnly(2025, 3, 15), 4, 15.5m, "High", "This project involves the installation of a solar panel system for a residential home located in the city center.", "Solar Panel and system Installation ", new DateOnly(2025, 2, 5), "High", new DateOnly(2025, 3, 10), 1, "123 Solar St.", 1, "Medium", 1 }
+                    { 4, "Solar City", 25000.00m, new DateOnly(2025, 3, 20), new DateOnly(2025, 3, 15), 4, 15.5m, "High", "This project involves the installation of a solar panel system for a residential home located in the city center.", "Solar Panel and system Installation ", new DateOnly(2025, 2, 5), "High", new DateOnly(2025, 3, 10), 1, "123 Solar St.", 1, "Medium", 1 },
+                    { 5, "Solar City", 800000.00m, new DateOnly(2025, 5, 18), new DateOnly(2025, 5, 15), 5, 200.0m, "Very High", "Installation of a large-scale rooftop solar system for a shopping mall.", "Rooftop Solar for Shopping Mall", new DateOnly(2025, 4, 1), "Very High", new DateOnly(2025, 5, 10), 3, "789 Mall Rd.", 3, "High", 3 },
+                    { 6, "Green Valley", 1500000.00m, new DateOnly(2025, 6, 10), new DateOnly(2025, 6, 5), 6, 500.0m, "High", "A solar farm project to provide renewable energy for a large agricultural facility.", "Solar Farm for Agricultural Use", new DateOnly(2025, 5, 1), "High", new DateOnly(2025, 6, 1), 4, "567 Farm Ln.", 4, "Medium", 4 },
+                    { 7, "Lakewood", 20000.00m, new DateOnly(2025, 7, 8), new DateOnly(2025, 7, 5), 7, 10.0m, "Medium", "Installation of a completely off-grid solar system for a remote cabin.", "Off-Grid Solar Installation for Cabin", new DateOnly(2025, 6, 10), "Medium", new DateOnly(2025, 7, 1), 2, "910 Mountain Pass", 5, "High", 5 },
+                    { 8, "Solar City", 1200000.00m, new DateOnly(2025, 8, 25), new DateOnly(2025, 8, 20), 8, 300.0m, "Very High", "Installation of a solar-powered backup system for a major city hospital.", "Solar Backup System for Hospital", new DateOnly(2025, 7, 10), "Very High", new DateOnly(2025, 8, 15), 5, "300 Health St.", 6, "Very High", 6 },
+                    { 9, "Solar City", 30000.00m, new DateOnly(2025, 9, 12), new DateOnly(2025, 9, 10), 9, 20.0m, "Medium", "Installation of a solar panel system with battery storage for a suburban home.", "Residential Solar with Battery Storage", new DateOnly(2025, 8, 1), "Medium", new DateOnly(2025, 9, 5), 1, "222 Suburb Ln.", 1, "Medium", 7 },
+                    { 10, "Green Town", 200000.00m, new DateOnly(2025, 10, 18), new DateOnly(2025, 10, 15), 10, 50.0m, "Medium", "A solar canopy providing renewable energy for a local public park.", "Solar Canopy for Public Park", new DateOnly(2025, 9, 1), "High", new DateOnly(2025, 10, 10), 3, "100 Park Blvd.", 2, "Low", 8 },
+                    { 11, "Industrial City", 1600000.00m, new DateOnly(2025, 11, 12), new DateOnly(2025, 11, 10), 11, 400.0m, "High", "Adding solar panels to an existing factory to reduce energy costs.", "Solar Retrofit for Factory", new DateOnly(2025, 10, 1), "Very High", new DateOnly(2025, 11, 5), 4, "888 Industrial Ave.", 4, "Medium", 9 },
+                    { 12, "Solar City", 300000.00m, new DateOnly(2025, 12, 10), new DateOnly(2025, 12, 5), 12, 80.0m, "High", "Installation of solar-powered streetlights across the city.", "Solar Streetlight Installation", new DateOnly(2025, 11, 1), "Medium", new DateOnly(2025, 12, 1), 2, "Various Locations", 3, "High", 10 }
                 });
 
             migrationBuilder.InsertData(
@@ -569,7 +607,16 @@ namespace Solarness.Services.Migrations
                 {
                     { 1, 1, 1 },
                     { 2, 1, 2 },
-                    { 3, 2, 3 }
+                    { 3, 2, 3 },
+                    { 4, 1, 12 },
+                    { 5, 3, 11 },
+                    { 6, 2, 10 },
+                    { 7, 1, 9 },
+                    { 8, 5, 8 },
+                    { 9, 5, 7 },
+                    { 10, 5, 6 },
+                    { 11, 4, 5 },
+                    { 12, 1, 4 }
                 });
 
             migrationBuilder.InsertData(
@@ -676,7 +723,17 @@ namespace Solarness.Services.Migrations
                     { 1, "Conduct initial site assessment for solar panel installation.", new DateOnly(2024, 1, 15), 1, 1, new DateOnly(2024, 1, 10), "Completed", "Site Assessment" },
                     { 2, "Submit necessary permits for approval.", new DateOnly(2024, 2, 10), 2, 2, new DateOnly(2024, 2, 1), "In Progress", "Permit Submission" },
                     { 3, "Order and receive necessary materials for installation.", new DateOnly(2024, 3, 20), 3, 3, new DateOnly(2024, 3, 5), "Pending", "Material Procurement" },
-                    { 4, "Complete solar panel installation on-site.", new DateOnly(2024, 4, 25), 2, 4, new DateOnly(2024, 4, 10), "Scheduled", "Installation" }
+                    { 4, "Complete solar panel installation on-site.", new DateOnly(2024, 4, 25), 2, 4, new DateOnly(2024, 4, 10), "Scheduled", "Installation" },
+                    { 5, "Conduct system tests to ensure proper functionality.", new DateOnly(2024, 5, 5), 4, 1, new DateOnly(2024, 5, 1), "Scheduled", "System Testing" },
+                    { 6, "Perform final inspection before project completion.", new DateOnly(2024, 5, 15), 5, 2, new DateOnly(2024, 5, 10), "Pending", "Final Inspection" },
+                    { 7, "Train the client on solar panel maintenance and usage.", new DateOnly(2024, 6, 2), 6, 3, new DateOnly(2024, 6, 1), "Pending", "Client Training" },
+                    { 8, "Complete necessary electrical work for installation.", new DateOnly(2024, 6, 10), 7, 4, new DateOnly(2024, 6, 5), "Scheduled", "Electrical Work" },
+                    { 9, "Prepare the roof for solar panel installation.", new DateOnly(2024, 7, 3), 8, 5, new DateOnly(2024, 7, 1), "Completed", "Roof Preparation" },
+                    { 10, "Ensure the structure can support solar panels.", new DateOnly(2024, 7, 8), 9, 6, new DateOnly(2024, 7, 5), "In Progress", "Structural Reinforcement" },
+                    { 11, "Organize and secure all necessary cabling.", new DateOnly(2024, 8, 3), 10, 7, new DateOnly(2024, 8, 1), "Pending", "Cable Management" },
+                    { 12, "Secure solar panels onto the mounting structure.", new DateOnly(2024, 8, 10), 1, 8, new DateOnly(2024, 8, 5), "Scheduled", "Solar Panel Mounting" },
+                    { 13, "Integrate solar system with the existing power grid.", new DateOnly(2024, 9, 5), 2, 9, new DateOnly(2024, 9, 1), "Pending", "System Integration" },
+                    { 14, "Provide warranty details and project documentation to the client.", new DateOnly(2024, 9, 15), 3, 10, new DateOnly(2024, 9, 10), "Scheduled", "Warranty and Documentation" }
                 });
 
             migrationBuilder.InsertData(
@@ -686,7 +743,8 @@ namespace Solarness.Services.Migrations
                 {
                     { 1, "Installation of 25 roof-mounted solar panels for residential project.", new DateOnly(2024, 3, 10), new DateOnly(2024, 3, 1), "Roof Mounted", 1, 25, 1, 1 },
                     { 2, "Ground-mounted solar panel system for commercial project.", new DateOnly(2024, 3, 20), new DateOnly(2024, 3, 15), "Ground Mounted", 2, 40, 2, 2 },
-                    { 3, "Residential solar installation with 30 roof-mounted panels.", new DateOnly(2024, 4, 7), new DateOnly(2024, 4, 1), "Roof Mounted", 3, 30, 3, 3 }
+                    { 3, "Residential solar installation with 30 roof-mounted panels.", new DateOnly(2024, 4, 7), new DateOnly(2024, 4, 1), "Roof Mounted", 3, 30, 3, 3 },
+                    { 4, "Installation of 50 ground-mounted solar panels at a commercial site.", new DateOnly(2024, 4, 12), new DateOnly(2024, 4, 5), "Ground Mounted", 4, 50, 4, 4 }
                 });
 
             migrationBuilder.CreateIndex(

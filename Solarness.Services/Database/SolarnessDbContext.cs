@@ -465,8 +465,138 @@ public partial class SolarnessDbContext : DbContext
         PasswordHash = "JfJzsL3ngGWki+Dn67C+8WLy73I=",  // Make sure to hash the password
         PasswordSalt = "7TUJfmgkkDvcY3PB/M4fhg==",   // Password salt
         RoleId = 2  // RoleId for Admin
-    }
-);
+    },
+    
+    new User
+    {
+        UserId = 4,
+        FirstName = "Robert",
+        LastName = "Johnson",
+        Username = "robertj",
+        Email = "robertj@email.com",
+        PhoneNumber = "321-654-0987",
+        Picture = "path/to/picture4.jpg",
+        PasswordHash = "hJfJzsL3ngGWki+Dn67C+8WLy73I=",
+        PasswordSalt = "9TUJfmgkkDvcY3PB/M4fhg==",
+        RoleId = 2  // RoleId for Manager
+    },
+    new User
+    {
+        UserId = 5,
+        FirstName = "Emily",
+        LastName = "Clark",
+        Username = "emilyc",
+        Email = "emilyc@email.com",
+        PhoneNumber = "456-123-7890",
+        Picture = "path/to/picture5.jpg",
+        PasswordHash = "oJfJzsL3ngGWki+Dn67C+8WLy73I=",
+        PasswordSalt = "8TUJfmgkkDvcY3PB/M4fhg==",
+        RoleId = 3  // RoleId for User
+    },
+    new User
+    {
+        UserId = 6,
+        FirstName = "Daniel",
+        LastName = "Brown",
+        Username = "danbrown",
+        Email = "danbrown@email.com",
+        PhoneNumber = "987-654-3210",
+        Picture = "path/to/picture6.jpg",
+        PasswordHash = "pJfJzsL3ngGWki+Dn67C+8WLy73I=",
+        PasswordSalt = "6TUJfmgkkDvcY3PB/M4fhg==",
+        RoleId = 1  // RoleId for Admin
+    },
+    new User
+    {
+        UserId = 7,
+        FirstName = "Sophia",
+        LastName = "Miller",
+        Username = "sophiam",
+        Email = "sophiam@email.com",
+        PhoneNumber = "789-012-3456",
+        Picture = "path/to/picture7.jpg",
+        PasswordHash = "qJfJzsL3ngGWki+Dn67C+8WLy73I=",
+        PasswordSalt = "5TUJfmgkkDvcY3PB/M4fhg==",
+        RoleId = 4  // RoleId for Manager
+    },
+    new User
+    {
+        UserId = 8,
+        FirstName = "Michael",
+        LastName = "Davis",
+        Username = "michaeld",
+        Email = "michaeld@email.com",
+        PhoneNumber = "345-678-9012",
+        Picture = "path/to/picture8.jpg",
+        PasswordHash = "rJfJzsL3ngGWki+Dn67C+8WLy73I=",
+        PasswordSalt = "4TUJfmgkkDvcY3PB/M4fhg==",
+        RoleId = 3  // RoleId for User
+    },
+    new User
+    {
+        UserId = 9,
+        FirstName = "Olivia",
+        LastName = "Wilson",
+        Username = "oliviaw",
+        Email = "oliviaw@email.com",
+        PhoneNumber = "654-321-0987",
+        Picture = "path/to/picture9.jpg",
+        PasswordHash = "sJfJzsL3ngGWki+Dn67C+8WLy73I=",
+        PasswordSalt = "3TUJfmgkkDvcY3PB/M4fhg==",
+        RoleId = 4  // RoleId for Admin
+    },
+    new User
+    {
+        UserId = 10,
+        FirstName = "William",
+        LastName = "Anderson",
+        Username = "williamand",
+        Email = "williamand@email.com",
+        PhoneNumber = "231-546-7890",
+        Picture = "path/to/picture10.jpg",
+        PasswordHash = "tJfJzsL3ngGWki+Dn67C+8WLy73I=",
+        PasswordSalt = "2TUJfmgkkDvcY3PB/M4fhg==",
+        RoleId = 3  // RoleId for User
+    },
+    new User
+    {
+        UserId = 11,
+        FirstName = "James",
+        LastName = "Martinez",
+        Username = "jamesm",
+        Email = "jamesm@email.com",
+        PhoneNumber = "123-789-4560",
+        Picture = "path/to/picture11.jpg",
+        PasswordHash = "uJfJzsL3ngGWki+Dn67C+8WLy73I=",
+        PasswordSalt = "1TUJfmgkkDvcY3PB/M4fhg==",
+        RoleId = 2  // RoleId for Manager
+    },
+    new User
+    {
+        UserId = 12,
+        FirstName = "Isabella",
+        LastName = "Garcia",
+        Username = "isabellag",
+        Email = "isabellag@email.com",
+        PhoneNumber = "789-456-1230",
+        Picture = "path/to/picture12.jpg",
+        PasswordHash = "vJfJzsL3ngGWki+Dn67C+8WLy73I=",
+        PasswordSalt = "0TUJfmgkkDvcY3PB/M4fhg==",
+        RoleId = 3  // RoleId for User
+    },
+    new User
+    {
+        UserId = 13,
+        FirstName = "David",
+        LastName = "Taylor",
+        Username = "davidt",
+        Email = "davidt@email.com",
+        PhoneNumber = "567-890-1234",
+        Picture = "path/to/picture13.jpg",
+        PasswordHash = "wJfJzsL3ngGWki+Dn67C+8WLy73I=",
+        PasswordSalt = "zTUJfmgkkDvcY3PB/M4fhg==",
+        RoleId = 4  
+    });
 
 
         // Seed Roles
@@ -486,7 +616,7 @@ public partial class SolarnessDbContext : DbContext
      new Role
      {
          RoleId = 3,
-         Name = "User",
+         Name = "Panel installer",
          Description = "Regular user with access to view and interact with projects."
      },
      new Role
@@ -547,6 +677,126 @@ public partial class SolarnessDbContext : DbContext
         City = "Wind City",
         PostalCode = "11223",
         Country = "WindLand"
+    },
+    new Homeowner
+    {
+        HomeownerId = 5,
+        FirstName = "Michael",
+        LastName = "Brown",
+        PhoneNumber = "222-333-4444",
+        Email = "michaelbrown@email.com",
+        Address = "321 Sunbeam St.",
+        City = "Solar City",
+        PostalCode = "54321",
+        Country = "SolarLand"
+    },
+    new Homeowner
+    {
+        HomeownerId = 6,
+        FirstName = "Emily",
+        LastName = "Davis",
+        PhoneNumber = "111-222-3333",
+        Email = "emilydavis@email.com",
+        Address = "654 Eco Dr.",
+        City = "Eco Town",
+        PostalCode = "98765",
+        Country = "EcoLand"
+    },
+    new Homeowner
+    {
+        HomeownerId = 7,
+        FirstName = "Robert",
+        LastName = "Wilson",
+        PhoneNumber = "777-888-9999",
+        Email = "robertwilson@email.com",
+        Address = "147 Solar Panel Ln.",
+        City = "Green Valley",
+        PostalCode = "56789",
+        Country = "SolarLand"
+    },
+    new Homeowner
+    {
+        HomeownerId = 8,
+        FirstName = "Laura",
+        LastName = "Martinez",
+        PhoneNumber = "666-777-8888",
+        Email = "lauramartinez@email.com",
+        Address = "369 Renewable Ct.",
+        City = "Eco Town",
+        PostalCode = "34567",
+        Country = "EcoLand"
+    },
+    new Homeowner
+    {
+        HomeownerId = 9,
+        FirstName = "David",
+        LastName = "Anderson",
+        PhoneNumber = "444-555-6666",
+        Email = "davidanderson@email.com",
+        Address = "258 Sustainable St.",
+        City = "Wind City",
+        PostalCode = "23456",
+        Country = "WindLand"
+    },
+    new Homeowner
+    {
+        HomeownerId = 10,
+        FirstName = "Sophia",
+        LastName = "Taylor",
+        PhoneNumber = "888-999-0000",
+        Email = "sophiataylor@email.com",
+        Address = "159 Bright Future Blvd.",
+        City = "Solar City",
+        PostalCode = "67890",
+        Country = "SolarLand"
+    },
+    new Homeowner
+    {
+        HomeownerId = 11,
+        FirstName = "James",
+        LastName = "Harris",
+        PhoneNumber = "333-444-5555",
+        Email = "jamesharris@email.com",
+        Address = "753 Green Energy Ave.",
+        City = "Eco Town",
+        PostalCode = "13579",
+        Country = "EcoLand"
+    },
+    new Homeowner
+    {
+        HomeownerId = 12,
+        FirstName = "Isabella",
+        LastName = "White",
+        PhoneNumber = "222-111-0000",
+        Email = "isabellawhite@email.com",
+        Address = "951 Wind Power Rd.",
+        City = "Wind City",
+        PostalCode = "98712",
+        Country = "WindLand"
+    },
+    new Homeowner
+    {
+        HomeownerId = 13,
+        FirstName = "William",
+        LastName = "Thompson",
+        PhoneNumber = "777-666-5555",
+        Email = "williamthompson@email.com",
+        Address = "852 Solar Horizon St.",
+        City = "Solar City",
+        PostalCode = "36985",
+        Country = "SolarLand"
+    },
+    new Homeowner
+    {
+        HomeownerId = 14,
+        FirstName = "Olivia",
+        LastName = "Garcia",
+        PhoneNumber = "999-888-7777",
+        Email = "oliviagarcia@email.com",
+        Address = "456 Renewable Future Blvd.",
+        City = "Green Valley",
+        PostalCode = "21478",
+        Country = "EcoLand"
     }
 );
 
@@ -636,7 +886,175 @@ public partial class SolarnessDbContext : DbContext
           TeamId = 1, // "Solar Installers" team
           UserId = 1, // Admin user
           HomeownerId = 4, // Homeowner with ID 1
-      }
+      },
+       new Project
+       {
+           ProjectId = 5,
+           ProjectName = "Rooftop Solar for Shopping Mall",
+           ProjectDescription = "Installation of a large-scale rooftop solar system for a shopping mall.",
+           StreetAddress = "789 Mall Rd.",
+           City = "Solar City",
+           Kw = 200.0m, // 200 kW
+           ContractAmount = 800000.00m,
+           SiteInspectionDate = new DateOnly(2025, 5, 10),
+           EngineeringSubmitDate = new DateOnly(2025, 5, 15),
+           EngineeringReceivedDate = new DateOnly(2025, 5, 18),
+           SaleDate = new DateOnly(2025, 4, 1),
+           Significance = "Very High",
+           Urgency = "High",
+           PriorityLevel = "Very High",
+           StatusId = 3, // "Approved"
+           TeamId = 3, // "Mall Solar Team"
+           UserId = 3, // Project Manager
+           HomeownerId = 5, // Mall Owner
+       },
+    new Project
+    {
+        ProjectId = 6,
+        ProjectName = "Solar Farm for Agricultural Use",
+        ProjectDescription = "A solar farm project to provide renewable energy for a large agricultural facility.",
+        StreetAddress = "567 Farm Ln.",
+        City = "Green Valley",
+        Kw = 500.0m, // 500 kW
+        ContractAmount = 1500000.00m,
+        SiteInspectionDate = new DateOnly(2025, 6, 1),
+        EngineeringSubmitDate = new DateOnly(2025, 6, 5),
+        EngineeringReceivedDate = new DateOnly(2025, 6, 10),
+        SaleDate = new DateOnly(2025, 5, 1),
+        Significance = "High",
+        Urgency = "Medium",
+        PriorityLevel = "High",
+        StatusId = 4, // "Under Construction"
+        TeamId = 4, // "Solar Farms Team"
+        UserId = 4, // Lead Engineer
+        HomeownerId = 6, // Farm Owner
+    },
+    new Project
+    {
+        ProjectId = 7,
+        ProjectName = "Off-Grid Solar Installation for Cabin",
+        ProjectDescription = "Installation of a completely off-grid solar system for a remote cabin.",
+        StreetAddress = "910 Mountain Pass",
+        City = "Lakewood",
+        Kw = 10.0m, // 10 kW
+        ContractAmount = 20000.00m,
+        SiteInspectionDate = new DateOnly(2025, 7, 1),
+        EngineeringSubmitDate = new DateOnly(2025, 7, 5),
+        EngineeringReceivedDate = new DateOnly(2025, 7, 8),
+        SaleDate = new DateOnly(2025, 6, 10),
+        Significance = "Medium",
+        Urgency = "High",
+        PriorityLevel = "Medium",
+        StatusId = 2, // "In Progress"
+        TeamId = 5, // "Off-Grid Solar Team"
+        UserId = 5, // Sales Manager
+        HomeownerId = 7, // Cabin Owner
+    },
+    new Project
+    {
+        ProjectId = 8,
+        ProjectName = "Solar Backup System for Hospital",
+        ProjectDescription = "Installation of a solar-powered backup system for a major city hospital.",
+        StreetAddress = "300 Health St.",
+        City = "Solar City",
+        Kw = 300.0m, // 300 kW
+        ContractAmount = 1200000.00m,
+        SiteInspectionDate = new DateOnly(2025, 8, 15),
+        EngineeringSubmitDate = new DateOnly(2025, 8, 20),
+        EngineeringReceivedDate = new DateOnly(2025, 8, 25),
+        SaleDate = new DateOnly(2025, 7, 10),
+        Significance = "Very High",
+        Urgency = "Very High",
+        PriorityLevel = "Very High",
+        StatusId = 5, // "Completed"
+        TeamId = 6, // "Hospital Solar Team"
+        UserId = 6, // Admin
+        HomeownerId = 8, // Hospital Owner
+    },
+    new Project
+    {
+        ProjectId = 9,
+        ProjectName = "Residential Solar with Battery Storage",
+        ProjectDescription = "Installation of a solar panel system with battery storage for a suburban home.",
+        StreetAddress = "222 Suburb Ln.",
+        City = "Solar City",
+        Kw = 20.0m, // 20 kW
+        ContractAmount = 30000.00m,
+        SiteInspectionDate = new DateOnly(2025, 9, 5),
+        EngineeringSubmitDate = new DateOnly(2025, 9, 10),
+        EngineeringReceivedDate = new DateOnly(2025, 9, 12),
+        SaleDate = new DateOnly(2025, 8, 1),
+        Significance = "Medium",
+        Urgency = "Medium",
+        PriorityLevel = "Medium",
+        StatusId = 1, // "Planning"
+        TeamId = 1, // "Solar Installers"
+        UserId = 7, // Technician
+        HomeownerId = 9, // Homeowner
+    },
+    new Project
+    {
+        ProjectId = 10,
+        ProjectName = "Solar Canopy for Public Park",
+        ProjectDescription = "A solar canopy providing renewable energy for a local public park.",
+        StreetAddress = "100 Park Blvd.",
+        City = "Green Town",
+        Kw = 50.0m, // 50 kW
+        ContractAmount = 200000.00m,
+        SiteInspectionDate = new DateOnly(2025, 10, 10),
+        EngineeringSubmitDate = new DateOnly(2025, 10, 15),
+        EngineeringReceivedDate = new DateOnly(2025, 10, 18),
+        SaleDate = new DateOnly(2025, 9, 1),
+        Significance = "High",
+        Urgency = "Low",
+        PriorityLevel = "Medium",
+        StatusId = 3, // "Approved"
+        TeamId = 2, // "Commercial Solar Team"
+        UserId = 8, // Project Manager
+        HomeownerId = 10, // City Government
+    },
+    new Project
+    {
+        ProjectId = 11,
+        ProjectName = "Solar Retrofit for Factory",
+        ProjectDescription = "Adding solar panels to an existing factory to reduce energy costs.",
+        StreetAddress = "888 Industrial Ave.",
+        City = "Industrial City",
+        Kw = 400.0m, // 400 kW
+        ContractAmount = 1600000.00m,
+        SiteInspectionDate = new DateOnly(2025, 11, 5),
+        EngineeringSubmitDate = new DateOnly(2025, 11, 10),
+        EngineeringReceivedDate = new DateOnly(2025, 11, 12),
+        SaleDate = new DateOnly(2025, 10, 1),
+        Significance = "Very High",
+        Urgency = "Medium",
+        PriorityLevel = "High",
+        StatusId = 4, // "Under Construction"
+        TeamId = 4, // "Industrial Solar Team"
+        UserId = 9, // Senior Engineer
+        HomeownerId = 11, // Factory Owner
+    },
+    new Project
+    {
+        ProjectId = 12,
+        ProjectName = "Solar Streetlight Installation",
+        ProjectDescription = "Installation of solar-powered streetlights across the city.",
+        StreetAddress = "Various Locations",
+        City = "Solar City",
+        Kw = 80.0m, // 80 kW
+        ContractAmount = 300000.00m,
+        SiteInspectionDate = new DateOnly(2025, 12, 1),
+        EngineeringSubmitDate = new DateOnly(2025, 12, 5),
+        EngineeringReceivedDate = new DateOnly(2025, 12, 10),
+        SaleDate = new DateOnly(2025, 11, 1),
+        Significance = "Medium",
+        Urgency = "High",
+        PriorityLevel = "High",
+        StatusId = 2, // "In Progress"
+        TeamId = 3, // "Public Infrastructure Team"
+        UserId = 10, // Project Manager
+        HomeownerId = 12, // City Council
+    }
 );
 
 
@@ -801,19 +1219,19 @@ public partial class SolarnessDbContext : DbContext
          NumberOfPanels = 30,
          Description = "Residential solar installation with 30 roof-mounted panels.",
          ProjectId = 3
+     },
+     new InstallationDetail
+     {
+         InstallationDetailId = 4,
+         LocationId = 4,
+         UserId = 4,
+         InstallStartDate = new DateOnly(2024, 4, 5),
+         InstallCompleteDate = new DateOnly(2024, 4, 12),
+         InstallationType = "Ground Mounted",
+         NumberOfPanels = 50,
+         Description = "Installation of 50 ground-mounted solar panels at a commercial site.",
+         ProjectId = 4
      }
-     //new InstallationDetail
-     //{
-     //    InstallationDetailId = 4,
-     //    LocationId = 4,
-     //    UserId = 4,
-     //    InstallStartDate = new DateOnly(2024, 4, 5),
-     //    InstallCompleteDate = new DateOnly(2024, 4, 12),
-     //    InstallationType = "Ground Mounted",
-     //    NumberOfPanels = 50,
-     //    Description = "Installation of 50 ground-mounted solar panels at a commercial site.",
-     //    ProjectId = 4
-     //}
  );
 
 
@@ -907,6 +1325,116 @@ public partial class SolarnessDbContext : DbContext
         Status = "Scheduled",
         ProjectId = 4,
         MemberId = 2
+    },
+    new Task
+    {
+        TaskId = 5,
+        TaskName = "System Testing",
+        Description = "Conduct system tests to ensure proper functionality.",
+        StartDate = new DateOnly(2024, 5, 1),
+        EndDate = new DateOnly(2024, 5, 5),
+        Status = "Scheduled",
+        ProjectId = 1,
+        MemberId = 4
+    },
+    new Task
+    {
+        TaskId = 6,
+        TaskName = "Final Inspection",
+        Description = "Perform final inspection before project completion.",
+        StartDate = new DateOnly(2024, 5, 10),
+        EndDate = new DateOnly(2024, 5, 15),
+        Status = "Pending",
+        ProjectId = 2,
+        MemberId = 5
+    },
+    new Task
+    {
+        TaskId = 7,
+        TaskName = "Client Training",
+        Description = "Train the client on solar panel maintenance and usage.",
+        StartDate = new DateOnly(2024, 6, 1),
+        EndDate = new DateOnly(2024, 6, 2),
+        Status = "Pending",
+        ProjectId = 3,
+        MemberId = 6
+    },
+    new Task
+    {
+        TaskId = 8,
+        TaskName = "Electrical Work",
+        Description = "Complete necessary electrical work for installation.",
+        StartDate = new DateOnly(2024, 6, 5),
+        EndDate = new DateOnly(2024, 6, 10),
+        Status = "Scheduled",
+        ProjectId = 4,
+        MemberId = 7
+    },
+    new Task
+    {
+        TaskId = 9,
+        TaskName = "Roof Preparation",
+        Description = "Prepare the roof for solar panel installation.",
+        StartDate = new DateOnly(2024, 7, 1),
+        EndDate = new DateOnly(2024, 7, 3),
+        Status = "Completed",
+        ProjectId = 5,
+        MemberId = 8
+    },
+    new Task
+    {
+        TaskId = 10,
+        TaskName = "Structural Reinforcement",
+        Description = "Ensure the structure can support solar panels.",
+        StartDate = new DateOnly(2024, 7, 5),
+        EndDate = new DateOnly(2024, 7, 8),
+        Status = "In Progress",
+        ProjectId = 6,
+        MemberId = 9
+    },
+    new Task
+    {
+        TaskId = 11,
+        TaskName = "Cable Management",
+        Description = "Organize and secure all necessary cabling.",
+        StartDate = new DateOnly(2024, 8, 1),
+        EndDate = new DateOnly(2024, 8, 3),
+        Status = "Pending",
+        ProjectId = 7,
+        MemberId = 10
+    },
+    new Task
+    {
+        TaskId = 12,
+        TaskName = "Solar Panel Mounting",
+        Description = "Secure solar panels onto the mounting structure.",
+        StartDate = new DateOnly(2024, 8, 5),
+        EndDate = new DateOnly(2024, 8, 10),
+        Status = "Scheduled",
+        ProjectId = 8,
+        MemberId = 1
+    },
+    new Task
+    {
+        TaskId = 13,
+        TaskName = "System Integration",
+        Description = "Integrate solar system with the existing power grid.",
+        StartDate = new DateOnly(2024, 9, 1),
+        EndDate = new DateOnly(2024, 9, 5),
+        Status = "Pending",
+        ProjectId = 9,
+        MemberId = 2
+    },
+    new Task
+    {
+        TaskId = 14,
+        TaskName = "Warranty and Documentation",
+        Description = "Provide warranty details and project documentation to the client.",
+        StartDate = new DateOnly(2024, 9, 10),
+        EndDate = new DateOnly(2024, 9, 15),
+        Status = "Scheduled",
+        ProjectId = 10,
+        MemberId = 3
     }
 );
 
@@ -1079,8 +1607,89 @@ public partial class SolarnessDbContext : DbContext
         Description = "Engineers overseeing solar panel projects.",
         CreationDate = new DateTime(2024, 2, 10),
         UserId = 2
+    },
+    new Team
+    {
+        TeamId = 3,
+        TeamName = "Electrical Technicians",
+        Description = "Team responsible for handling electrical components of solar projects.",
+        CreationDate = new DateTime(2024, 3, 5),
+        UserId = 3
+    },
+    new Team
+    {
+        TeamId = 4,
+        TeamName = "Site Inspectors",
+        Description = "Team ensuring project sites meet installation requirements.",
+        CreationDate = new DateTime(2024, 3, 20),
+        UserId = 4
+    },
+    new Team
+    {
+        TeamId = 5,
+        TeamName = "Sales & Client Relations",
+        Description = "Team handling sales and customer relationships.",
+        CreationDate = new DateTime(2024, 4, 15),
+        UserId = 5
+    },
+    new Team
+    {
+        TeamId = 6,
+        TeamName = "Permitting Specialists",
+        Description = "Team responsible for securing necessary permits.",
+        CreationDate = new DateTime(2024, 5, 2),
+        UserId = 6
+    },
+    new Team
+    {
+        TeamId = 7,
+        TeamName = "Material Procurement",
+        Description = "Team handling orders and materials for projects.",
+        CreationDate = new DateTime(2024, 5, 18),
+        UserId = 7
+    },
+    new Team
+    {
+        TeamId = 8,
+        TeamName = "Quality Assurance",
+        Description = "Team responsible for checking installation quality.",
+        CreationDate = new DateTime(2024, 6, 10),
+        UserId = 8
+    },
+    new Team
+    {
+        TeamId = 9,
+        TeamName = "Maintenance & Support",
+        Description = "Team providing maintenance and troubleshooting support.",
+        CreationDate = new DateTime(2024, 6, 25),
+        UserId = 9
+    },
+    new Team
+    {
+        TeamId = 10,
+        TeamName = "Renewable Energy Consultants",
+        Description = "Team advising on energy efficiency and renewable solutions.",
+        CreationDate = new DateTime(2024, 7, 5),
+        UserId = 10
+    },
+    new Team
+    {
+        TeamId = 11,
+        TeamName = "Battery Storage Experts",
+        Description = "Team specializing in battery storage solutions for solar projects.",
+        CreationDate = new DateTime(2024, 7, 20),
+        UserId = 11
+    },
+    new Team
+    {
+        TeamId = 12,
+        TeamName = "Grid Integration Specialists",
+        Description = "Team handling integration of solar systems with the power grid.",
+        CreationDate = new DateTime(2024, 8, 10),
+        UserId = 12
     }
 );
+
 
         // Seed Team Members
         modelBuilder.Entity<TeamMember>().HasData(
@@ -1101,6 +1710,60 @@ public partial class SolarnessDbContext : DbContext
         MemberId = 3,
         TeamId = 2,
         UserId = 3
+    },
+     new TeamMember
+     {
+         MemberId = 4,
+         TeamId = 1,
+         UserId = 12
+     },
+    new TeamMember
+    {
+        MemberId = 5,
+        TeamId = 3,
+        UserId = 11
+    },
+    new TeamMember
+    {
+        MemberId = 6,
+        TeamId = 2,
+        UserId = 10
+    },
+     new TeamMember
+     {
+         MemberId = 7,
+         TeamId = 1,
+         UserId = 9
+     },
+    new TeamMember
+    {
+        MemberId = 8,
+        TeamId = 5,
+        UserId = 8
+    },
+    new TeamMember
+    {
+        MemberId = 9,
+        TeamId = 5,
+        UserId = 7
+    },
+     new TeamMember
+     {
+         MemberId = 10,
+         TeamId = 5,
+         UserId = 6
+     },
+    new TeamMember
+    {
+        MemberId = 11,
+        TeamId = 4,
+        UserId = 5
+    },
+    new TeamMember
+    {
+        MemberId = 12,
+        TeamId = 1,
+        UserId = 4
     }
 );
 

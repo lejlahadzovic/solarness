@@ -38,7 +38,7 @@ The application enables creating and monitoring solar projects, predicting energ
 - Simple and intuitive chat interface  
 
 ### Machine Learning (Python)
-- Algorithms: **Random Forest, Decision Trees, Neural Networks**  
+- Algorithms: **Random Forest, Decision Trees**  
 - Models trained and tested in **Python**  
 - Integrated into the .NET backend via REST API  
 
